@@ -1,0 +1,108 @@
+<%- model_class = Release -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<% if @releases.present? %>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:accounts) %></th>
+      <th><%= model_class.human_attribute_name(:accounts_extra).titleize %></th>
+      <th><%= model_class.human_attribute_name(:addons) %></th>
+      <th><%= model_class.human_attribute_name(:collaborate) %></th>
+      <th><%= model_class.human_attribute_name(:help) %></th>
+      <th><%= model_class.human_attribute_name(:mysageone) %></th>
+      <th><%= model_class.human_attribute_name(:payroll) %></th>
+      <th><%= model_class.human_attribute_name(:notes) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @releases.each do |release| %>
+    <tr>
+    <td><%= link_to release.date, release_path(release) %></td>
+    <td><%= release.accounts %></td>
+    <td><%= release.accounts_extra %></td>
+    <td><%= release.addons %></td>
+    <td><%= release.collaborate %></td>
+    <td><%= release.help %></td>
+    <td><%= release.mysageone %></td>
+    <td><%= release.payroll %></td>
+    <td><%= truncate(release.notes) %></td>
+    <td>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+        edit_release_path(release), :class => 'btn btn-mini' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+        release_path(release),
+        :method => :delete,
+        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+        :class => 'btn btn-mini btn-danger' %>
+    </td>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+<% else %>
+    <p>There are no releases.</p>
+<% end %>
+
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+    new_release_path,
+    :class => 'btn btn-primary' %>
+
+  <center><%= paginate @releases %></center>
+
+<% content_for :sidebar do %>
+<h3>Next Release</h3>
+<% if @next_release.present? %>
+<dl class="dl-horizontal-left">
+  <dt><strong><%= (:date).to_s.titleize %>:</strong></dt>
+  <dd><%= link_to @next_release.date, release_path(@next_release) %></dd>
+  <dt><strong><%= (:accounts).to_s.titleize %>:</strong></dt>
+  <dd><%= @next_release.accounts %></dd>
+  <dt><strong><%= (:accounts_extra).to_s.titleize %>:</strong></dt>
+  <dd><%= @next_release.accounts_extra %></dd>
+  <dt><strong><%= (:addons).to_s.titleize %>:</strong></dt>
+  <dd><%= @next_release.addons %></dd>
+  <dt><strong><%= (:collaborate).to_s.titleize %>:</strong></dt>
+  <dd><%= @next_release.collaborate %></dd>
+  <dt><strong><%= (:help).to_s.titleize %>:</strong></dt>
+  <dd><%= @next_release.help %></dd>
+  <dt><strong><%= (:mysageone).to_s.titleize %>:</strong></dt>
+  <dd><%= @next_release.mysageone %></dd>
+  <dt><strong><%= (:payroll).to_s.titleize %>:</strong></dt>
+  <dd><%= @next_release.payroll %></dd>
+  <dt><strong><%= (:notes).to_s.titleize %>:</strong></dt>
+  <dd><%= truncate(@next_release.notes) %></dd>
+</dl>
+<% else %>
+  <p>No releases match this criteria</p>
+<% end %>
+
+<h3>Last Release</h3>
+<% if @last_release.present? %>
+<dl class="dl-horizontal-left">
+  <dt><strong><%= (:date).to_s.titleize %>:</strong></dt>
+  <dd><%= link_to @last_release.date, release_path(@last_release) %></dd>
+  <dt><strong><%= (:accounts).to_s.titleize %>:</strong></dt>
+  <dd><%= @last_release.accounts  %></dd>
+  <dt><strong><%= (:accounts_extra).to_s.titleize %>:</strong></dt>
+  <dd><%= @last_release.accounts_extra %></dd>
+  <dt><strong><%= (:addons).to_s.titleize %>:</strong></dt>
+  <dd><%= @last_release.addons %></dd>
+  <dt><strong><%= (:collaborate).to_s.titleize %>:</strong></dt>
+  <dd><%= @last_release.collaborate %></dd>
+  <dt><strong><%= (:help).to_s.titleize %>:</strong></dt>
+  <dd><%= @last_release.help %></dd>
+  <dt><strong><%= (:mysageone).to_s.titleize %>:</strong></dt>
+  <dd><%= @last_release.mysageone %></dd>
+  <dt><strong><%= (:payroll).to_s.titleize %>:</strong></dt>
+  <dd><%= @last_release.payroll %></dd>
+  <dt><strong><%= (:notes).to_s.titleize %>:</strong></dt>
+  <dd><%= truncate(@last_release.notes) %></dd>
+</dl>
+<% else %>
+  <p>No releases match this criteria</p>
+<% end %>
+<% end %>
