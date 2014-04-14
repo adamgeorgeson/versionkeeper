@@ -31,6 +31,8 @@ gem 'kaminari'
 gem 'rspec'
 gem 'rspec-rails'
 
+gem 'logput'
+
 group :development do
   gem 'pry'
 end

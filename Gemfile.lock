@@ -65,6 +65,8 @@ GEM
     kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    logput (0.0.1)
+      rack
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -161,6 +163,7 @@ DEPENDENCIES
   devise (~> 3.0.0.rc)
   jquery-rails
   kaminari
+  logput
   pg
   pry
   pundit
