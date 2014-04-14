@@ -23,10 +23,14 @@ end
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise', '~> 3.0.0.rc'
+gem 'pundit'
 gem 'twitter-bootstrap-rails'
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'kaminari'
 
+gem 'rspec'
+gem 'rspec-rails'
+gem 'pry'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

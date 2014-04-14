@@ -1,5 +1,8 @@
 Versionkeeper::Application.routes.draw do
 
+  resources :releases
+
+
   devise_for :users
 
   resources :releases
