@@ -6,10 +6,9 @@ class ReleasesController < ApplicationController
   # GET /releases
   # GET /releases.json
   def index
-  @last_release = Release.where("date < '#{Date.today}'").last
-  @next_release = Release.where("date > '#{Date.today}'").first
+  @last_release = Release.where("date <= '#{Date.today.strftime('%Y-%m-%d')}'").last
+  @next_release = Release.where("date >= '#{Date.today.strftime('%Y-%m-%d')}'").first
   @releases = Release.order('date DESC').page params[:page]
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @releases }
