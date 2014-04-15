@@ -7,7 +7,6 @@ gem 'rails', '3.2.17'
 
 gem 'pg'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -31,9 +30,8 @@ gem 'kaminari'
 gem 'rspec'
 gem 'rspec-rails'
 
-gem 'logput'
-
 group :development do
+  gem 'logput'
   gem 'pry'
 end
 # To use ActiveModel has_secure_password
