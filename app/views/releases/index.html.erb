@@ -22,14 +22,14 @@
   <% @releases.each do |release| %>
     <tr>
     <td><%= link_to release.date, release_path(release) %></td>
-    <td><%= release.accounts %></td>
-    <td><%= release.accounts_extra %></td>
-    <td><%= release.addons %></td>
-    <td><%= release.collaborate %></td>
-    <td><%= release.help %></td>
-    <td><%= release.mysageone %></td>
-    <td><%= release.payroll %></td>
-    <td><%= truncate(release.notes) %></td>
+    <td><%= release.accounts || Release.previous_release(release.date).accounts || "-" %></td>
+    <td><%= release.accounts_extra || Release.previous_release.accounts_extra || "-" %></td>
+    <td><%= release.addons || @last_release.addons || "-" %></td>
+    <td><%= release.collaborate || @last_release.collaborate || "-" %></td>
+    <td><%= release.help || @last_release.help || "-" %></td>
+    <td><%= release.mysageone || @last_release.mysageone || "-" %></td>
+    <td><%= release.payroll || @last_release.payroll || "-" %></td>
+    <td><%= truncate(release.notes) || "-" %></td>
     <td>
       <%= link_to t('.edit', :default => t("helpers.links.edit")),
         edit_release_path(release), :class => 'btn btn-mini' %>

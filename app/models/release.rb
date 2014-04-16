@@ -4,7 +4,7 @@ class Release < ActiveRecord::Base
   validates_presence_of :date
   paginates_per 10
 
-  def new_release?
-    require 'pry'; binding.pry
+  def self.previous_release date
+    self.where("date < ?", date).first
   end
 end
