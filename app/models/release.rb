@@ -5,6 +5,6 @@ class Release < ActiveRecord::Base
   paginates_per 10
 
   def self.version app, date
-    self.where("#{app} != '' AND date <= ?", date).uniq.order(app).pluck(app).last || "-"
+    self.where("#{app} != '' AND date <= ?", date).pluck(app).sort_by(&:to_i).last || "-"
   end
 end
