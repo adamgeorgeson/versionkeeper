@@ -29,9 +29,9 @@
     <td <%= release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', release.date) %></td>
     <td <%= release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', release.date) %></td>
     <td>
-      <%= fa_link_to "pencil","",
+      <%= link_to t('.edit', :default => t("helpers.links.edit")),
         edit_release_path(release), :class => 'btn btn-mini' %>
-      <%= fa_link_to "trash-o", "",
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
         release_path(release),
         :method => :delete,
         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },

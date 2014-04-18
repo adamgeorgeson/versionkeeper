@@ -12,10 +12,6 @@ gem 'pg'
 group :assets do
   gem 'sass', '3.2.13'
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'therubyracer'
-  gem 'less-rails'
-  gem 'less-rails-fontawesome'
-  gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -34,7 +30,6 @@ gem 'rspec'
 gem 'rspec-rails'
 
 group :development do
-  gem 'logput'
   gem 'pry'
 end
 # To use ActiveModel has_secure_password
