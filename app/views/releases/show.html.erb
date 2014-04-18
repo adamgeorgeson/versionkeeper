@@ -3,26 +3,28 @@
   <h1><%=t '.title', :default => @release.date %></h1>
 </div>
 
+<div>
 <dl class="dl-horizontal-left">
   <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
   <dd><%= @release.date %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:accounts) %>:</strong></dt>
-  <dd><%= @release.accounts %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:accounts_extra) %>:</strong></dt>
-  <dd><%= @release.accounts_extra %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:addons) %>:</strong></dt>
-  <dd><%= @release.addons %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:collaborate) %>:</strong></dt>
-  <dd><%= @release.collaborate %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:help) %>:</strong></dt>
-  <dd><%= @release.help %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:mysageone) %>:</strong></dt>
-  <dd><%= @release.mysageone %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:payroll) %>:</strong></dt>
-  <dd><%= @release.payroll %></dd>
+  <dt><strong><%= (:mysageone).to_s.titleize %>:</strong></dt>
+    <dd <%= @release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', @release.date) %></dd>
+  <dt><strong><%= (:accounts).to_s.titleize %>:</strong></dt>
+    <dd <%= @release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', @release.date) %></dd>
+  <dt><strong><%= (:accounts_extra).to_s.titleize %>:</strong></dt>
+    <dd <%= @release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', @release.date) %></dd>
+  <dt><strong><%= (:payroll).to_s.titleize %>:</strong></dt>
+    <dd <%= @release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', @release.date) %></dd>
+  <dt><strong><%= (:addons).to_s.titleize %>:</strong></dt>
+    <dd <%= @release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', @release.date) %></dd>
+  <dt><strong><%= (:collaborate).to_s.titleize %>:</strong></dt>
+    <dd <%= @release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', @release.date) %></dd>
+  <dt><strong><%= (:help).to_s.titleize %>:</strong></dt>
+    <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release.date) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
   <dd><%= @release.notes %></dd>
 </dl>
+</div>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
