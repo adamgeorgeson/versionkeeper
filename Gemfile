@@ -11,6 +11,9 @@ gem 'pg'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
+  gem 'therubyracer'
+  gem 'less-rails'
+  gem 'less-rails-fontawesome'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -22,7 +25,6 @@ end
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise', '~> 3.0.0.rc'
-gem 'pundit'
 gem 'twitter-bootstrap-rails'
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'kaminari'

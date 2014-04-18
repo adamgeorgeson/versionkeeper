@@ -7,33 +7,33 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:date) %></th>
+      <th><%= model_class.human_attribute_name(:mysageone) %></th>
       <th><%= model_class.human_attribute_name(:accounts) %></th>
       <th><%= model_class.human_attribute_name(:accounts_extra).titleize %></th>
+      <th><%= model_class.human_attribute_name(:payroll) %></th>
       <th><%= model_class.human_attribute_name(:addons) %></th>
       <th><%= model_class.human_attribute_name(:collaborate) %></th>
       <th><%= model_class.human_attribute_name(:help) %></th>
-      <th><%= model_class.human_attribute_name(:mysageone) %></th>
-      <th><%= model_class.human_attribute_name(:payroll) %></th>
       <th><%= model_class.human_attribute_name(:notes) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
   <% @releases.each do |release| %>
     <tr>
     <td><%= link_to release.date, release_path(release) %></td>
-    <td><%= release.accounts || Release.previous_release(release.date).accounts || "-" %></td>
-    <td><%= release.accounts_extra || Release.previous_release.accounts_extra || "-" %></td>
-    <td><%= release.addons || @last_release.addons || "-" %></td>
-    <td><%= release.collaborate || @last_release.collaborate || "-" %></td>
-    <td><%= release.help || @last_release.help || "-" %></td>
-    <td><%= release.mysageone || @last_release.mysageone || "-" %></td>
-    <td><%= release.payroll || @last_release.payroll || "-" %></td>
+    <td <%= release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', release.date) %></td>
+    <td <%= release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', release.date) %></td>
+    <td <%= release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', release.date) %></td>
+    <td <%= release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', release.date) %></td>
+    <td <%= release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', release.date) %></td>
+    <td <%= release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', release.date) %></td>
+    <td <%= release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', release.date) %></td>
     <td><%= truncate(release.notes) || "-" %></td>
     <td>
-      <%= link_to t('.edit', :default => t("helpers.links.edit")),
+      <%= fa_link_to "pencil","",
         edit_release_path(release), :class => 'btn btn-mini' %>
-      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+      <%= fa_link_to "trash-o", "",
         release_path(release),
         :method => :delete,
         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },

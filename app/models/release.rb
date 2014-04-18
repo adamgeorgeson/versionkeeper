@@ -4,7 +4,7 @@ class Release < ActiveRecord::Base
   validates_presence_of :date
   paginates_per 10
 
-  def self.previous_release date
-    self.where("date < ?", date).first
+  def self.version app, date
+    self.where("#{app} != '' AND date <= ?", date).uniq.order(app).pluck(app).last || "-"
   end
 end
