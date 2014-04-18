@@ -26,7 +26,7 @@ gem 'devise', '~> 3.0.0.rc'
 gem 'twitter-bootstrap-rails'
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'kaminari'
-
+gem 'simple_format'
 gem 'rspec'
 gem 'rspec-rails'
 

@@ -22,7 +22,7 @@
   <dt><strong><%= (:help).to_s.titleize %>:</strong></dt>
     <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release.date) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
-  <dd><%= @release.notes %></dd>
+  <dd><%= simple_format(@release.notes) %></dd>
 </dl>
 </div>
 

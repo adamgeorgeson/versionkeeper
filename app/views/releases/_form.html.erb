@@ -7,7 +7,7 @@
   <%= f.input :help %>
   <%= f.input :mysageone %>
   <%= f.input :payroll %>
-  <%= f.input :notes, :as => :text, :input_html => { :rows => 4, :maxlength => 150, :style => "width:400px;" } %>
+  <%= f.input :notes, :as => :text, :input_html => { :rows => 4, :maxlength => 1000, :style => "width:400px;" } %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
