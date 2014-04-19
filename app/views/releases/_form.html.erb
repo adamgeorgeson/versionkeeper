@@ -1,12 +1,12 @@
 <%= simple_form_for @release, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.input :date, :as => :date_picker %>
+  <%= f.input :mysageone %>
   <%= f.input :accounts %>
   <%= f.input :accounts_extra %>
+  <%= f.input :payroll %>
   <%= f.input :addons %>
   <%= f.input :collaborate %>
   <%= f.input :help %>
-  <%= f.input :mysageone %>
-  <%= f.input :payroll %>
   <%= f.input :notes, :as => :text, :input_html => { :rows => 4, :maxlength => 1000, :style => "width:400px;" } %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
