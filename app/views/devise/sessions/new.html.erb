@@ -1,5 +1,4 @@
-<% content_for :sidebar do %>
-  <h2>Sign in</h2>
+<h2>Sign in</h2>
 
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div class="form-inputs">
@@ -7,10 +6,11 @@
   <%= f.input :password, :required => false %>
   <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
 </div>
-
 <div class="form-actions">
-  <%= f.button :submit, "Sign in", :class => 'btn btn-primary' %>
-  <%= render "devise/shared/links" %>
-</div>
+<%= f.button :submit, "Sign in", :class => 'btn btn-primary' %>
 <% end %>
+</div>
+
+<% content_for :sidebar do %>
+  <%= render "devise/shared/links" %>
 <% end %>

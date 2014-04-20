@@ -1,6 +1,4 @@
-<% content_for :sidebar do %>
-
-  <%- if controller_name != 'sessions' %>
+<%- if controller_name != 'sessions' %>
   <%= link_to "Sign in", new_session_path(resource_name), :class => 'btn btn-primary' %><br /><br />
 <% end -%>
 
@@ -24,5 +22,4 @@
   <%- resource_class.omniauth_providers.each do |provider| %>
   <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
   <% end -%>
-<% end -%>
 <% end -%>

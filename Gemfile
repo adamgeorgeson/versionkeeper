@@ -27,11 +27,16 @@ gem 'twitter-bootstrap-rails'
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'kaminari'
 gem 'simple_format'
-gem 'rspec'
-gem 'rspec-rails'
 
 group :development do
   gem 'pry'
+end
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem "email_spec", ">= 1.4.0"
+  gem 'factory_girl_rails'
+  gem "database_cleaner", ">= 0.9.1"
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
