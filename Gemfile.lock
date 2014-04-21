@@ -77,6 +77,8 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -147,6 +149,10 @@ GEM
     simple_format (0.0.2)
       multi_json
       sanitize
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     slop (3.5.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -182,6 +188,7 @@ DEPENDENCIES
   factory_girl_rails
   jquery-rails
   kaminari
+  letter_opener
   pg
   pry
   rails (= 3.2.17)
@@ -191,5 +198,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simple_form
   simple_format
+  simplecov (~> 0.7.1)
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
