@@ -5,8 +5,8 @@ class ReleasesController < ApplicationController
 
   # GET /releases
   def index
-    @last_release = Release.where("date < '#{Date.today.strftime('%Y-%m-%d')}'").last
-    @next_release = Release.where("date >= '#{Date.today.strftime('%Y-%m-%d')}'").first
+    @last_release = Release.last_release
+    @next_release = Release.next_release
     @releases = Release.order('date DESC').page params[:page]
     respond_to do |format|
       format.html # index.html.erb

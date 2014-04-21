@@ -12,4 +12,12 @@ class Release < ActiveRecord::Base
       self.where("#{app} != '' AND date <= ?", @date).pluck(app).sort_by(&:to_i).last || "-"
     end
   end
+
+  def self.last_release
+    self.where("date < '#{Date.today.strftime('%Y-%m-%d')}'").last
+  end
+
+  def self.next_release
+    self.where("date >= '#{Date.today.strftime('%Y-%m-%d')}'").first
+  end
 end
