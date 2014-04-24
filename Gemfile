@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise', '~> 3.0.0.rc'
 gem 'twitter-bootstrap-rails'
+gem "bootstrap-sass-rails", "~> 2.2.2.0"
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'kaminari'
 gem 'simple_format'
