@@ -7,7 +7,7 @@ class ReleasesController < ApplicationController
   def index
     @last_release = Release.last_release
     @next_release = Release.next_release
-    @releases = Release.order('date DESC').page params[:page]
+    @releases = Release.order('date DESC, created_at DESC').page params[:page]
     respond_to do |format|
       format.html # index.html.erb
     end
