@@ -3,9 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .new-version {
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .previous-version {
   color: #999;
+}
+
+.next_release {
+  background-color: #A9f5BC;
 }

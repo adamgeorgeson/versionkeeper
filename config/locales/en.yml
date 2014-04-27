@@ -2,3 +2,18 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  releases:
+    index: "Click on a row to view release details, make changes or delete the release."
+    new_edit: "Input version values only for new versions of that application for this release."
+    date: "Date"
+    empty: "There are no releases."
+    no_match: "No releases match this criteria."
+    notes: "Notes"
+  app:
+    mysageone: "My Sage One"
+    accounts: "Accounts"
+    accounts_extra: "Accounts Extra"
+    collaborate: "Collaborate"
+    payroll: "Payroll"
+    addons: "Addons"
+    help: "Help"

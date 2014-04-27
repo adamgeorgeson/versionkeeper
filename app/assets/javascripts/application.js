@@ -19,3 +19,10 @@
 //= require bootstrap-datetimepicker/core
 //= require bootstrap-datetimepicker/pickers
 //= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.hu.js
+
+// Clickable rows
+jQuery(function($) {
+$("tr[data-link]").click(function() {
+window.location = this.dataset.link
+});
+})

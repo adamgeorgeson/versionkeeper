@@ -5,8 +5,7 @@
     <%= f.error_notification %>
   <%= f.full_error :unlock_token %>
 
-  <%= f.input :email, :required => true, :autofocus => true %>
+  <%= f.input :email, :required => true, :autofocus => true, :label => false, :placeholder => "Email" %>
   <%= f.button :submit, "Resend unlock instructions" %>
-  <%= link_to "Back", :back, :class => 'btn btn-danger' %>
 <% end %>
 </div>

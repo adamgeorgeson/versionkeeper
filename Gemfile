@@ -32,7 +32,10 @@ gem 'simple_format'
 group :development do
   gem "letter_opener"
   gem 'pry'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
+
 group :test do
   gem 'rspec'
   gem 'rspec-rails'

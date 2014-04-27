@@ -1,102 +1,45 @@
 <%- model_class = Release -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <p><%= I18n.t('releases.index') %></p>
 </div>
 <% if @releases.present? %>
-  <table class="table table-striped">
+  <table class="table table-hover table-responsive">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:date) %></th>
-      <th><%= model_class.human_attribute_name(:mysageone) %></th>
-      <th><%= model_class.human_attribute_name(:accounts) %></th>
-      <th><%= model_class.human_attribute_name(:accounts_extra).titleize %></th>
-      <th><%= model_class.human_attribute_name(:payroll) %></th>
-      <th><%= model_class.human_attribute_name(:addons) %></th>
-      <th><%= model_class.human_attribute_name(:collaborate) %></th>
-      <th><%= model_class.human_attribute_name(:help) %></th>
+      <th><%= I18n.t('releases.date') %></th>
+      <th><%= I18n.t('app.mysageone') %></th>
+      <th><%= I18n.t('app.accounts') %></th>
+      <th><%= I18n.t('app.accounts_extra') %></th>
+      <th><%= I18n.t('app.payroll') %></th>
+      <th><%= I18n.t('app.addons') %></th>
+      <th><%= I18n.t('app.collaborate') %></th>
+      <th><%= I18n.t('app.help') %></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
   <% @releases.each do |release| %>
-    <tr>
-    <td><%= link_to release.date, release_path(release) %></td>
-    <td <%= release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', release) %></td>
-    <td <%= release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', release) %></td>
-    <td <%= release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', release) %></td>
-    <td <%= release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', release) %></td>
-    <td <%= release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', release) %></td>
-    <td <%= release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', release) %></td>
-    <td <%= release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', release) %></td>
-    <td>
-      <%= link_to t('.edit', :default => t("helpers.links.edit")),
-        edit_release_path(release), :class => 'btn btn-mini' %>
-      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-        release_path(release),
-        :method => :delete,
-        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm")) },
-        :class => 'btn btn-mini btn-danger' %>
-    </td>
+    <tr data-link='<%= release_path(release) %>' <%= release == @next_release ? "class=next_release" : "class=foo" %>>
+      <td><%= release.date %></td>
+      <td <%= release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', release) %></td>
+      <td <%= release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', release) %></td>
+      <td <%= release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', release) %></td>
+      <td <%= release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', release) %></td>
+      <td <%= release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', release) %></td>
+      <td <%= release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', release) %></td>
+      <td <%= release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', release) %></td>
     </tr>
-  <% end %>
-    </tbody>
-  </table>
+<% end %>
+  </tbody>
+</table>
 <% else %>
-    <p>There are no releases.</p>
+  <p><%= I18n.t('releases.empty') %></p>
 <% end %>
 
-  <%= link_to t('.new', :default => t("helpers.links.new")),
-    new_release_path,
-    :class => 'btn btn-primary' %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+  new_release_path,
+  :class => 'btn btn-primary' %>
 
-  <center><%= paginate @releases %></center>
+<center><%= paginate @releases %></center>
 
-<% content_for :sidebar do %>
-<h3>Next Release</h3>
-<% if @next_release.present? %>
-<dl class="dl-horizontal-left">
-  <dt><strong><%= (:date).to_s.titleize %>:</strong></dt>
-  <dd><%= link_to @next_release.date, release_path(@next_release) %></dd>
-  <dt><strong><%= (:mysageone).to_s.titleize %>:</strong></dt>
-    <dd <%= @next_release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', @next_release) %></dd>
-  <dt><strong><%= (:accounts).to_s.titleize %>:</strong></dt>
-    <dd <%= @next_release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', @next_release) %></dd>
-  <dt><strong><%= (:accounts_extra).to_s.titleize %>:</strong></dt>
-    <dd <%= @next_release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', @next_release) %></dd>
-  <dt><strong><%= (:payroll).to_s.titleize %>:</strong></dt>
-    <dd <%= @next_release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', @next_release) %></dd>
-  <dt><strong><%= (:addons).to_s.titleize %>:</strong></dt>
-    <dd <%= @next_release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', @next_release) %></dd>
-  <dt><strong><%= (:collaborate).to_s.titleize %>:</strong></dt>
-    <dd <%= @next_release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', @next_release) %></dd>
-  <dt><strong><%= (:help).to_s.titleize %>:</strong></dt>
-    <dd <%= @next_release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @next_release) %></dd>
-</dl>
-<% else %>
-  <p>No releases match this criteria</p>
-<% end %>
-
-<h3>Last Release</h3>
-<% if @last_release.present? %>
-<dl class="dl-horizontal-left">
-  <dt><strong><%= (:date).to_s.titleize %>:</strong></dt>
-  <dd><%= link_to @last_release.date, release_path(@last_release) %></dd>
-  <dt><strong><%= (:mysageone).to_s.titleize %>:</strong></dt>
-    <dd <%= @last_release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', @last_release) %></dd>
-  <dt><strong><%= (:accounts).to_s.titleize %>:</strong></dt>
-    <dd <%= @last_release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', @last_release) %></dd>
-  <dt><strong><%= (:accounts_extra).to_s.titleize %>:</strong></dt>
-    <dd <%= @last_release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', @last_release) %></dd>
-  <dt><strong><%= (:payroll).to_s.titleize %>:</strong></dt>
-    <dd <%= @last_release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', @last_release) %></dd>
-  <dt><strong><%= (:addons).to_s.titleize %>:</strong></dt>
-    <dd <%= @last_release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', @last_release) %></dd>
-  <dt><strong><%= (:collaborate).to_s.titleize %>:</strong></dt>
-    <dd <%= @last_release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', @last_release) %></dd>
-  <dt><strong><%= (:help).to_s.titleize %>:</strong></dt>
-    <dd <%= @last_release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @last_release) %></dd>
-</dl>
-<% else %>
-  <p>No releases match this criteria</p>
-<% end %>
-<% end %>

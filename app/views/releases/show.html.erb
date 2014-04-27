@@ -5,35 +5,35 @@
 
 <div>
 <dl class="dl-horizontal-left">
-  <dt><strong><%= model_class.human_attribute_name(:date) %>:</strong></dt>
+  <dt><strong><%= I18n.t('releases.date') %>:</strong></dt>
   <dd><%= @release.date %></dd>
-  <dt><strong><%= (:mysageone).to_s.titleize %>:</strong></dt>
+  <dt><strong><%= I18n.t('app.mysageone') %>:</strong></dt>
     <dd <%= @release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', @release) %></dd>
-  <dt><strong><%= (:accounts).to_s.titleize %>:</strong></dt>
+  <dt><strong><%= I18n.t('app.accounts') %>:</strong></dt>
     <dd <%= @release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', @release) %></dd>
-  <dt><strong><%= (:accounts_extra).to_s.titleize %>:</strong></dt>
+  <dt><strong><%= I18n.t('app.accounts_extra') %>:</strong></dt>
     <dd <%= @release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', @release) %></dd>
-  <dt><strong><%= (:payroll).to_s.titleize %>:</strong></dt>
+  <dt><strong><%= I18n.t('app.payroll') %>:</strong></dt>
     <dd <%= @release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', @release) %></dd>
-  <dt><strong><%= (:addons).to_s.titleize %>:</strong></dt>
+  <dt><strong><%= I18n.t('app.addons') %>:</strong></dt>
     <dd <%= @release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', @release) %></dd>
-  <dt><strong><%= (:collaborate).to_s.titleize %>:</strong></dt>
+  <dt><strong><%= I18n.t('app.collaborate') %>:</strong></dt>
     <dd <%= @release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', @release) %></dd>
-  <dt><strong><%= (:help).to_s.titleize %>:</strong></dt>
+  <dt><strong><%= I18n.t('app.help') %>:</strong></dt>
     <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release) %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:notes) %>:</strong></dt>
+  <dt><strong><%= I18n.t('releases.notes') %>:</strong></dt>
   <dd><%= simple_format(@release.notes) %></dd>
 </dl>
 </div>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              releases_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_release_path(@release), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              release_path(@release),
-              :method => 'delete',
+<%= link_to t('.back', :default => t("helpers.links.back")),
+            releases_path, :class => 'btn'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+            edit_release_path(@release), :class => 'btn' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+            release_path(@release),
+            :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>
 </div>

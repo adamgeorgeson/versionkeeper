@@ -1,13 +1,10 @@
 class ReleasesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :load_releases
   before_filter :set_release, only: [:show, :edit, :update, :destroy]
-
 
   # GET /releases
   def index
-    @last_release = Release.last_release
-    @next_release = Release.next_release
-    @releases = Release.order('date DESC, created_at DESC').page params[:page]
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -80,5 +77,10 @@ class ReleasesController < ApplicationController
       flash[:alert] = 'Release not found.'
       redirect_to root_url
     end
+  end
+  
+  def load_releases
+    @releases = Release.order('date DESC, created_at DESC').page params[:page]
+    @next_release = Release.next_release
   end
 end
