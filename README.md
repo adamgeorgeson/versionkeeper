@@ -7,7 +7,6 @@ If you have suggestions on making this a better tool then raise an issue in gith
 Development tasks and bugs are managed on Trello. Contact me with your Trello username if you would like access.
 
 ## Instructions
-____________
 
 1. git clone git@github.com:adamgeorgeson/versionkeeper.git
 2. cd versionkeeper
@@ -16,7 +15,6 @@ ____________
 5. bundle exec rails s
 
 ## Contribute
-__________
 
 1. Fork the repo
 2. Submit a pull request into master
