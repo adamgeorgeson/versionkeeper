@@ -6,16 +6,16 @@ This is set up for a particular project, but feel free to modify for your own pr
 If you have suggestions on making this a better tool then raise an issue in github, or contribute with a pull request.
 Development tasks and bugs are managed on Trello. Contact me with your Trello username if you would like access.
 
-Instructions
+## Instructions
 ____________
 
 1. git clone git@github.com:adamgeorgeson/versionkeeper.git
 2. cd versionkeeper
-3. bundle (Note: This app uses postgres, if you run into installation problems with the pg gem run 'brew install postgresql' then try again).
+3. bundle
 4. bundle exec rake db:create db:migrate
 5. bundle exec rails s
 
-Contribute
+## Contribute
 __________
 
 1. Fork the repo

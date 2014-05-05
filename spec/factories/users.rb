@@ -7,7 +7,8 @@ FactoryGirl.define do
     password_confirmation 'changeme'
     #confirmed_at time.now
   end
-  factory :invalid_user do
+
+  factory :invalid_user, class: User do
     email 'example@example.com'
     password 'changeme'
     password_confirmation 'changeme'
