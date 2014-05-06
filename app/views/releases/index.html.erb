@@ -15,6 +15,7 @@
       <th><%= I18n.t('app.addons') %></th>
       <th><%= I18n.t('app.collaborate') %></th>
       <th><%= I18n.t('app.help') %></th>
+      <th><%= I18n.t('releases.status') %></th>
       <th></th>
     </tr>
   </thead>
@@ -29,6 +30,7 @@
       <td <%= release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', release) %></td>
       <td <%= release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', release) %></td>
       <td <%= release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', release) %></td>
+      <td><%= release.status %></span></td>
     </tr>
 <% end %>
   </tbody>
@@ -41,5 +43,5 @@
   new_release_path,
   :class => 'btn btn-primary' %>
 
-<center><%= paginate @releases %></center>
+<center><%= paginate @releases, :html_options => {:class => "pagination"} %></center>
 

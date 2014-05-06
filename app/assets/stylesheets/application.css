@@ -12,6 +12,7 @@
  *= require_tree .
  *= require bootstrap-datetimepicker 
  *= require bootstrap_and_overrides
+ *= require bootstrap-markdown
  */
 
 body { padding-top: 40px; }
@@ -24,7 +25,7 @@ body { padding-top: 40px; }
 .dl-horizontal-left:before,.dl-horizontal:after{display:table;content:"";line-height:0;}
 .dl-horizontal-left:after{clear:both;}
 .dl-horizontal-left dt{float:left;width:120px;clear:left;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.dl-horizontal-left dd{margin-left:120px;}
+.dl-horizontal-left dd{margin-left:120px; margin-bottom:5px;}
 
 /* User sign in and sign forms. */
 .border-form-div {
@@ -56,14 +57,16 @@ body { padding-top: 40px; }
 
 .simple_form label {  
   float: left;  
-  width: 100px;  
-  text-align: right;  
+  width: 120px;  
+  text-align: left;  
   margin: 2px 10px;  
+  padding-right: 10px;
   font-weight: bold;
 }  
   
 .simple_form div.input {  
   margin-bottom: 10px;  
+  clear: both;
 }  
   
 .simple_form div.boolean, .simple_form input[type='submit'] {  
@@ -74,3 +77,5 @@ body { padding-top: 40px; }
   float: none;  
   margin: 0;  
 }  
+
+

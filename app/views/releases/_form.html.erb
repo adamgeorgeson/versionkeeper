@@ -1,5 +1,6 @@
 <%= simple_form_for @release do |f| %>
   <%= f.input :date, :as => :date_picker %>
+  <%= f.input :status, :collection => [ "UAT", "Pre-Prod", "Production" ]  %>
   <%= f.input :mysageone %>
   <%= f.input :accounts %>
   <%= f.input :accounts_extra %>
@@ -7,7 +8,7 @@
   <%= f.input :addons %>
   <%= f.input :collaborate %>
   <%= f.input :help %>
-  <%= f.input :notes, :as => :text, :input_html => { :rows => 4, :maxlength => 1000, :style => "width:400px;" } %>
+  <%= f.input :notes, input_html: {:placeholder => "Enter some text.", :class => "span6", "data-provide" => "markdown" } %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

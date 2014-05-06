@@ -9,6 +9,7 @@ en:
     empty: "There are no releases."
     no_match: "No releases match this criteria."
     notes: "Notes"
+    status: "Status"
   app:
     mysageone: "My Sage One"
     accounts: "Accounts"

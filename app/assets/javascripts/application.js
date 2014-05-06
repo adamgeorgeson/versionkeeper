@@ -19,6 +19,7 @@
 //= require bootstrap-datetimepicker/core
 //= require bootstrap-datetimepicker/pickers
 //= require bootstrap-datetimepicker/locales/bootstrap-datetimepicker.hu.js
+//= require bootstrap-markdown
 
 // Clickable rows
 jQuery(function($) {

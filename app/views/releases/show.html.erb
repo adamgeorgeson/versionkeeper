@@ -7,25 +7,27 @@
 <dl class="dl-horizontal-left">
   <dt><strong><%= I18n.t('releases.date') %>:</strong></dt>
   <dd><%= @release.date %></dd>
+  <dt><strong><%= I18n.t('releases.status') %>:</strong></dt>
+  <dd><%= @release.status %></dd>
   <dt><strong><%= I18n.t('app.mysageone') %>:</strong></dt>
-    <dd <%= @release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', @release) %></dd>
+  <dd <%= @release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', @release) %></dd>
   <dt><strong><%= I18n.t('app.accounts') %>:</strong></dt>
-    <dd <%= @release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', @release) %></dd>
+  <dd <%= @release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', @release) %></dd>
   <dt><strong><%= I18n.t('app.accounts_extra') %>:</strong></dt>
-    <dd <%= @release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', @release) %></dd>
+  <dd <%= @release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', @release) %></dd>
   <dt><strong><%= I18n.t('app.payroll') %>:</strong></dt>
-    <dd <%= @release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', @release) %></dd>
+  <dd <%= @release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', @release) %></dd>
   <dt><strong><%= I18n.t('app.addons') %>:</strong></dt>
-    <dd <%= @release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', @release) %></dd>
+  <dd <%= @release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', @release) %></dd>
   <dt><strong><%= I18n.t('app.collaborate') %>:</strong></dt>
-    <dd <%= @release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', @release) %></dd>
+  <dd <%= @release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', @release) %></dd>
   <dt><strong><%= I18n.t('app.help') %>:</strong></dt>
-    <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release) %></dd>
+  <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release) %></dd>
   <dt><strong><%= I18n.t('releases.notes') %>:</strong></dt>
   <dd><%= simple_format(@release.notes) %></dd>
 </dl>
 </div>
-
+<br />
 <div class="form-actions">
 <%= link_to t('.back', :default => t("helpers.links.back")),
             releases_path, :class => 'btn'  %>

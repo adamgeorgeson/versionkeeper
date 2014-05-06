@@ -213,7 +213,7 @@ describe ReleasesController do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:invalid_release, accounts: "2.0")
         @release1.reload
         @release1.accounts.should_not eq("2.0")
-        @release1.date.should_not eq("t"
+        @release1.date.should_not eq("")
       end
       
       it "re-renders the edit method" do

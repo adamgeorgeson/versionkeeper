@@ -11,5 +11,13 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
-      date: "Dateo"
-      mysageone: "My Sage One"
+      release:
+        date: "Date"
+        mysageone: "My Sage One"
+        accounts: "Accounts"
+        accounts_extra: "Accounts Extra"
+        collaborate: "Collaborate"
+        payroll: "Payroll"
+        addons: "Addons"
+        help: "Help"
+        status: "Status"
