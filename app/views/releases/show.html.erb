@@ -24,7 +24,7 @@
   <dt><strong><%= I18n.t('app.help') %>:</strong></dt>
   <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release) %></dd>
   <dt><strong><%= I18n.t('releases.notes') %>:</strong></dt>
-  <dd><%= simple_format(@release.notes) %></dd>
+  <dd><%= markdown(@release.notes) %></dd>
 </dl>
 </div>
 <br />
