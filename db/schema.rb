@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(:version => 20140505160234) do
     t.string   "mysageone"
     t.string   "payroll"
     t.date     "date"
-    t.text     "notes"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.text     "notes",          :limit => 255
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.integer  "user_id"
-    t.string   "status",         :default => "UAT"
+    t.string   "status",                        :default => "UAT"
   end
 
   create_table "users", :force => true do |t|
