@@ -41,7 +41,7 @@ class ReleasesController < ApplicationController
       if @release.save
         format.html { redirect_to releases_url, notice: 'Release was successfully created.' }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
       end
     end
   end
@@ -54,7 +54,7 @@ class ReleasesController < ApplicationController
       if @release.update_attributes(params[:release])
         format.html { redirect_to releases_url, notice: 'Release was successfully updated.' }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
       end
     end
   end
@@ -67,10 +67,10 @@ class ReleasesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to releases_url }
     end
-
-  end 
+  end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_release
     unless @release = Release.where(id: params[:id]).first
@@ -78,7 +78,7 @@ class ReleasesController < ApplicationController
       redirect_to root_url
     end
   end
-  
+
   def load_releases
     @releases = Release.order('date DESC, created_at DESC').page params[:page]
     @next_release = Release.next_release

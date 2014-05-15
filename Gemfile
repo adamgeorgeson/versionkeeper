@@ -18,7 +18,6 @@ gem 'twitter-bootstrap-rails'
 gem "bootstrap-sass-rails", "~> 2.2.2.0"
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 gem 'kaminari-bootstrap', '~> 0.1.3'
-gem 'simple_format'
 gem 'rails-bootstrap-markdown', '~> 0.0.2'
 gem 'redcarpet'
 
