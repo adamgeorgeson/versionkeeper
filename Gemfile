@@ -11,6 +11,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'sqlite3'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise', '~> 3.0.0.rc'
@@ -28,10 +29,6 @@ group :development do
   gem 'binding_of_caller'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
-
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
@@ -39,8 +36,4 @@ group :test do
   gem 'factory_girl_rails'
   gem "database_cleaner", ">= 0.9.1"
   gem 'simplecov', '~> 0.7.1', :require => false
-end
-
-group :production do
-  gem 'pg'
 end
