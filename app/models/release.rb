@@ -16,10 +16,10 @@ class Release < ActiveRecord::Base
   end
 
   def self.last_release
-    where("date < '#{Date.today.strftime('%Y-%m-%d')}'").last
+    self.where("date < '#{Date.today.strftime('%Y-%m-%d')}'").last
   end
 
   def self.next_release
-    where("date >= '#{Date.today.strftime('%Y-%m-%d')}'").first
+    self.where("date >= '#{Date.today.strftime('%Y-%m-%d')}'").first
   end
 end
