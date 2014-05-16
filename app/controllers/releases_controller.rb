@@ -1,5 +1,4 @@
 class ReleasesController < ApplicationController
-  before_filter :authenticate_user!
   before_filter :load_releases
   before_filter :set_release, only: [:show, :edit, :update, :destroy]
 

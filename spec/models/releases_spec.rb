@@ -20,6 +20,11 @@ describe Release do
     expect( Release.version('mysageone', tomorrows_release) ).to eq("1.0")
   end
 
+  it "should return a specified apps version number if there is a version present this release" do
+    todays_release = Release.create!(FactoryGirl.attributes_for(:release, date: Date.yesterday))
+    expect( Release.version('mysageone', todays_release) ).to eq("1.0")
+  end
+
   it "should return a dash if no version number present for this release and specified app has no previous version numbers" do
     tomorrows_release = Release.create!(FactoryGirl.attributes_for(:release_only_date, date: Date.tomorrow))
     expect( Release.version('mysageone', tomorrows_release) ).to eq("-")

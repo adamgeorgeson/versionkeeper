@@ -2,8 +2,6 @@ Versionkeeper::Application.routes.draw do
 
   resources :releases
 
-  devise_for :users, :controllers => { :registrations => "registrations" }
-
   resources :releases
   root :to => "releases#index"
   

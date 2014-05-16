@@ -2,14 +2,8 @@ require 'spec_helper'
 
 describe ReleasesController do
 
-  before :each do
-    @user = FactoryGirl.create(:user)
-    sign_in @user
-    @user.confirm!
-  end
-
   describe "GET 'index'" do
-    it "should be successful when signed in" do
+    it "should be successful" do
       get :index
       response.should be_success
     end
@@ -19,20 +13,6 @@ describe ReleasesController do
       get :index
       assigns(:releases).should eq([release])
     end
-
-    it "should not be successful whilst not logged in" do
-      sign_out @user
-      get :index
-      response.should_not be_success
-    end
-
-    it "should not be successful whilst not a confirmed user" do
-      sign_out @user
-      @non_confirmed_user = FactoryGirl.create(:user, :email => 'example2@sage.com')
-      sign_in @non_confirmed_user
-      get :index
-      response.should_not be_success
-    end
   end
 
   describe "GET 'show'" do
@@ -40,7 +20,7 @@ describe ReleasesController do
       @release1 = FactoryGirl.create(:release)
     end
 
-    it "should be successful when signed in" do
+    it "should be successful" do
       get :show, id: @release1
       response.should be_success
     end
@@ -50,20 +30,6 @@ describe ReleasesController do
       assigns(:release).should eq(@release1)
     end
 
-    it "should not be successful whilst not logged in" do
-      sign_out @user
-      get :show, id: @release1
-      response.should_not be_success
-    end
-
-    it "should not be successful whilst not a confirmed user" do
-      sign_out @user
-      @non_confirmed_user = FactoryGirl.create(:user, :email => 'example2@sage.com')
-      sign_in @non_confirmed_user
-      get :show, id: @release1
-      response.should_not be_success
-    end
-
     it "should redirect to root when id not found" do
       get :show, id: 99999 
       response.should redirect_to root_url
@@ -71,23 +37,9 @@ describe ReleasesController do
   end
 
   describe "GET 'new'" do
-    it "should be successful when signed in" do
+    it "should be successful" do
       get :new
       response.should be_success
-    end
-
-    it "should not be successful whilst not logged in" do
-      sign_out @user
-      get :new
-      response.should_not be_success
-    end
-
-    it "should not be successful whilst not a confirmed user" do
-      sign_out @user
-      @non_confirmed_user = FactoryGirl.create(:user, :email => 'example2@sage.com')
-      sign_in @non_confirmed_user
-      get :new
-      response.should_not be_success
     end
   end
 
@@ -96,23 +48,9 @@ describe ReleasesController do
       @release1 = FactoryGirl.create(:release)
     end
 
-    it "should be successful when signed in" do
+    it "should be successful" do
       get :edit, id: @release1
       response.should be_success
-    end
-
-    it "should not be successful whilst not logged in" do
-      sign_out @user
-      get :edit, id: @release1
-      response.should_not be_success
-    end
-
-    it "should not be successful whilst not a confirmed user" do
-      sign_out @user
-      @non_confirmed_user = FactoryGirl.create(:user, :email => 'example2@sage.com')
-      sign_in @non_confirmed_user
-      get :edit, id: @release1
-      response.should_not be_success
     end
   end
 
@@ -121,20 +59,8 @@ describe ReleasesController do
       @release1 = FactoryGirl.create(:release)
     end
 
-    it "should be successful when signed in" do
+    it "should be successful" do
       expect{ delete :destroy, id: @release1 }.to change(Release, :count).by(-1)
-    end
-
-    it "should not be successful whilst not logged in" do
-      sign_out @user
-      expect{ delete :destroy, id: @release1 }.to_not change(Release, :count).by(-1)
-    end
-
-    it "should not be successful whilst not a confirmed user" do
-      sign_out @user
-      @non_confirmed_user = FactoryGirl.create(:user, :email => 'example2@sage.com')
-      sign_in @non_confirmed_user
-      expect{ delete :destroy, id: @release1 }.to_not change(Release, :count).by(-1)
     end
 
     it "redirects to releases#index" do
@@ -152,18 +78,6 @@ describe ReleasesController do
       it "redirects to the root url" do
         post :create, release: FactoryGirl.attributes_for(:release)
         response.should redirect_to releases_url
-      end
-
-      it "is not successful whilst not logged in" do
-        sign_out @user
-        expect{ post :create, release: FactoryGirl.attributes_for(:release) }.to_not change(Release, :count).by(1)
-      end
-
-      it "is not successful whilst not a confirmed user" do
-        sign_out @user
-        @non_confirmed_user = FactoryGirl.create(:user, :email => 'example2@sage.com')
-        sign_in @non_confirmed_user
-        expect{ post :create, release: FactoryGirl.attributes_for(:release) }.to_not change(Release, :count).by(1)
       end
     end
 
