@@ -24,6 +24,6 @@
 // Clickable rows
 jQuery(function($) {
 $("tr[data-link]").click(function() {
-window.location = this.dataset.link
+window.location = $(this).data("link")
 });
 })
