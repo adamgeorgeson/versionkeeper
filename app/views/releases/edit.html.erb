@@ -3,4 +3,4 @@
   <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
   <p><%= I18n.t('releases.new_edit') %></p>
 </div>
-<%= render :partial => 'form' %>
+<%= render :partial => 'form', locals: { action: :edit } %>

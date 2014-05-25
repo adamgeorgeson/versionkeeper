@@ -14,6 +14,22 @@
   background-color: #dff0d8;
 }
 
-tr {
+.table_data {
   cursor: pointer;
 }
+
+table {
+  table-layout: fixed;
+  overflow-x: auto;
+}
+
+.notes {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+

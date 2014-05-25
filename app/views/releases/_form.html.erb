@@ -1,14 +1,20 @@
-<%= simple_form_for @release do |f| %>
+<%= simple_form_for @release, :html => {:class => "form-vertical"} do |f| %>
+  <div class="row">
+    <div class="span5">
   <%= f.input :date, :as => :date_picker %>
-  <%= f.input :status, :collection => [ "UAT", "Pre-Prod", "Production" ]  %>
-  <%= f.input :mysageone %>
-  <%= f.input :accounts %>
-  <%= f.input :accounts_extra %>
-  <%= f.input :payroll %>
-  <%= f.input :addons %>
-  <%= f.input :collaborate %>
-  <%= f.input :help %>
-  <%= f.input :notes, input_html: {:placeholder => "Enter some text.", :class => "span6", "data-provide" => "markdown" } %>
+  <%= f.input :status, :collection => [ "UAT", "Pre-Prod", "Production" ], :default => "UAT"  %>
+  <%= f.input :mysageone, :placeholder => placeholder('mysageone') %>
+  <%= f.input :accounts, :placeholder => placeholder('accounts') %>
+  <%= f.input :accounts_extra, :placeholder => placeholder('accounts_extra') %>
+  <%= f.input :payroll, :placeholder => placeholder('payroll') %>
+  <%= f.input :addons, :placeholder =>  placeholder('addons') %>
+  <%= f.input :collaborate, :placeholder =>  placeholder('collaborate') %>
+  <%= f.input :help, :placeholder =>  placeholder('help') %>
+    </div>
+    <div class="span7">
+      <%= f.input :notes, input_html: { :placeholder => "Enter some text.", :class => "span7", "data-provide" => "markdown" } %>
+    </div>
+  </div>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

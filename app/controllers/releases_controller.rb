@@ -38,7 +38,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       if @release.save
-        format.html { redirect_to releases_url, notice: 'Release was successfully created.' }
+        format.html { redirect_to @release, notice: 'Release was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -51,7 +51,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       if @release.update_attributes(params[:release])
-        format.html { redirect_to releases_url, notice: 'Release was successfully updated.' }
+        format.html { redirect_to @release, notice: 'Release was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
@@ -67,10 +67,10 @@ class ReleasesController < ApplicationController
       format.html { redirect_to releases_url }
     end
   end
-
+  
   private
 
-  # Use callbacks to share common setup or constraints between actions.
+  # Redirect to root url if release does not exist 
   def set_release
     unless @release = Release.where(id: params[:id]).first
       flash[:alert] = 'Release not found.'
@@ -78,8 +78,16 @@ class ReleasesController < ApplicationController
     end
   end
 
+  # Load all releases
   def load_releases
     @releases = Release.order('date DESC, created_at DESC').page params[:page]
     @next_release = Release.next_release
+    @last_release = Release.last_release
   end
+
+  # Set a placeholder for forms
+  def placeholder(app)
+    @placeholder = Release.version(app, @last_release)
+  end
+  helper_method :placeholder
 end

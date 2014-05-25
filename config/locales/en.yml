@@ -3,7 +3,7 @@
 
 en:
   releases:
-    index: "Click on a row to view release details or make changes. Bold version numbers indicate a new version of an application."
+    index: "Click on a row to view release details or make changes. Bold version numbers indicate a new version of an application. Green row indicates next release."
     new_edit: "Input version values only for new versions of that application for this release."
     date: "Date"
     empty: "There are no releases."

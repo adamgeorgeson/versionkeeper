@@ -75,9 +75,9 @@ describe ReleasesController do
         expect{ post :create, release: FactoryGirl.attributes_for(:release) }.to change(Release, :count).by(1)
       end
 
-      it "redirects to the root url" do
+      it "redirects to the show page of new release" do
         post :create, release: FactoryGirl.attributes_for(:release)
-        response.should redirect_to releases_url
+        response.should redirect_to release_path(assigns[:release])
       end
     end
 
@@ -111,9 +111,9 @@ describe ReleasesController do
         @release1.notes.should eq("Updated Notes")
       end
       
-      it "redirects to releases#index" do
+      it "redirects to the show page of updated release" do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:release)
-        response.should redirect_to releases_url
+        response.should redirect_to release_path(assigns[:release])
       end
     end
     
