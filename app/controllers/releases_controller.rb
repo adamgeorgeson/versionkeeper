@@ -87,7 +87,7 @@ class ReleasesController < ApplicationController
 
   # Set a placeholder for forms
   def placeholder(app)
-    @placeholder = Release.version(app, @last_release)
+    @placeholder = "Current Version: " + Release.version(app, @last_release)
   end
   helper_method :placeholder
 end
