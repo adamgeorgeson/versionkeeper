@@ -6,19 +6,21 @@ class Release < ActiveRecord::Base
   paginates_per 10
 
   def self.version(app, release)
-    if release[app].present?
-      release[app]
-    else
-      @date = release.date
-      where("#{app} != '' AND date <= ?", @date).pluck(app).sort_by(&:to_i).last || '-'
+    if release.present?
+      if release[app].present?
+        release[app]
+      else
+        @date = release.date
+        where("#{app} != '' AND date <= ?", @date).pluck(app).sort_by(&:to_i).last || '-'
+      end
     end
   end
 
   def self.last_release
-    self.where("date < '#{Date.today.strftime('%Y-%m-%d')}'").last
+    self.where("date < '#{Date.today.strftime('%Y-%m-%d')}'").order('date').last
   end
 
   def self.next_release
-    self.where("date >= '#{Date.today.strftime('%Y-%m-%d')}'").first
+    self.where("date >= '#{Date.today.strftime('%Y-%m-%d')}'").order('date').first
   end
 end

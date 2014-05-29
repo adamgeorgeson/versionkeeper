@@ -4,7 +4,7 @@
 </div>
 
 <div class="row">
-  <div class="span5">
+  <div class="span3">
     <dl class="dl-horizontal-left">
       <dt><strong><%= I18n.t('releases.date') %>:</strong></dt>
       <dd><%= @release.date %></dd>
@@ -26,7 +26,7 @@
       <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release) %></dd>
     </dl>
   </div>
-  <div class="span7">
+  <div class="span9">
     <div class="notes">
     <%= @release.notes.present? ? markdown(@release.notes) : "There are no notes for this release. Check back later." %>
   </div>
