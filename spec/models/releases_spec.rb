@@ -49,4 +49,9 @@ describe Release do
     release = Release.create!(FactoryGirl.attributes_for(:release_only_date, date: Date.tomorrow))
     expect(release.status).to eq("UAT")
   end
+
+  it "should have a co-orindinator" do
+    release = Release.create!(FactoryGirl.attributes_for(:release_only_date, date: Date.tomorrow, coordinator: 'Bob'))
+    expect(release.coordinator).to eq("Bob")
+  end
 end

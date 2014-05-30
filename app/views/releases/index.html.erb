@@ -16,6 +16,7 @@
       <th><%= I18n.t('app.collaborate') %></th>
       <th><%= I18n.t('app.help') %></th>
       <th><%= I18n.t('releases.status') %></th>
+      <th><%= I18n.t('releases.coordinator') %></th>
       <th></th>
     </tr>
   </thead>
@@ -31,6 +32,7 @@
       <td class="<%= release.collaborate.present? ? "new-version" : "previous-version" %>"><%= Release.version('collaborate', release) %></td>
       <td class="<%= release.help.present? ? "new-version" : "previous-version" %>"><%= Release.version('help', release) %></td>
       <td><%= ['UAT','Pre-Prod'].include?(release.status) && release.date < Date.today ? release.status + "?" : release.status %></td>
+      <td><%= release.coordinator %></td>
     </tr>
 <% end %>
   </tbody>
