@@ -1,7 +1,7 @@
 class Release < ActiveRecord::Base
   attr_accessible :accounts, :accounts_extra, :addons,
                   :collaborate, :date, :help, :mysageone,
-                  :notes, :payroll, :status
+                  :notes, :payroll, :status, :coordinator
   validates_presence_of :date
   paginates_per 10
 
