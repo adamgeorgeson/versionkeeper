@@ -1,6 +1,6 @@
 <%- model_class = Release -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', :default => 'Sage One UKIE ' + model_class.model_name.human.pluralize.titleize  %></h1>
   <p><%= I18n.t('releases.index') %></p>
 </div>
 <% if @releases.present? %>
@@ -16,8 +16,7 @@
       <th><%= I18n.t('app.collaborate') %></th>
       <th><%= I18n.t('app.help') %></th>
       <th><%= I18n.t('releases.status') %></th>
-      <th><%= I18n.t('releases.coordinator') %></th>
-      <th></th>
+      <th width="150px"><%= I18n.t('releases.coordinator') %></th>
     </tr>
   </thead>
   <tbody>
