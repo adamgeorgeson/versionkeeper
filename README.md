@@ -1,7 +1,7 @@
 [VersionKeeper]
 =============
 
-Simple application to keep track of live deployments.
+Simple application to keep track of Sageukie live deployments.
 This is set up for a particular project, but feel free to modify for your own projects purpose. Just make sure your readme.md links back to this repo.
 If you have suggestions on making this a better tool then raise an issue in github, or contribute with a pull request.
 
