@@ -2,7 +2,9 @@ class Release < ActiveRecord::Base
   attr_accessible :accounts, :accounts_extra, :addons,
                   :collaborate, :date, :help, :mysageone,
                   :notes, :payroll, :status, :coordinator
+  
   validates_presence_of :date
+  before_save :set_coordinator
   paginates_per 10
 
   def self.version(app, release)
@@ -22,5 +24,9 @@ class Release < ActiveRecord::Base
 
   def self.next_release
     self.where("date >= '#{Date.today.strftime('%Y-%m-%d')}'").order('date').first
+  end
+
+  def set_coordinator
+    self.coordinator = "Russell Craxford" if self.coordinator.blank?
   end
 end

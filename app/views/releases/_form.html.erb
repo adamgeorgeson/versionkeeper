@@ -2,7 +2,7 @@
   <div class="row">
     <div class="span5">
   <%= f.input :date, :as => :date_picker %>
-  <%= f.input :coordinator,:input_html => {:value => 'Russell Craxford'} %>
+  <%= f.input :coordinator %>
   <%= f.input :status, :collection => [ "UAT", "Pre-Prod", "Production" ], :default => "UAT"  %>
   <%= f.input :mysageone, :placeholder => placeholder('mysageone') %>
   <%= f.input :accounts, :placeholder => placeholder('accounts') %>

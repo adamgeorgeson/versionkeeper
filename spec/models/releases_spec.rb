@@ -54,4 +54,9 @@ describe Release do
     release = Release.create!(FactoryGirl.attributes_for(:release_only_date, date: Date.tomorrow, coordinator: 'Bob'))
     expect(release.coordinator).to eq("Bob")
   end
+
+  it "should have a default co-ordinator if no value set" do
+    release = Release.create!(FactoryGirl.attributes_for(:release_only_date, date: Date.tomorrow))
+    expect(release.coordinator).to eq("Russell Craxford")
+  end
 end
