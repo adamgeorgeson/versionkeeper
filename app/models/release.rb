@@ -1,8 +1,8 @@
 class Release < ActiveRecord::Base
   attr_accessible :accounts, :accounts_extra, :addons,
-                  :collaborate, :date, :help, :mysageone,
-                  :notes, :payroll, :status, :coordinator
-  
+    :collaborate, :date, :help, :mysageone,
+    :notes, :payroll, :status, :coordinator
+
   validates_presence_of :date
   before_save :set_coordinator
   paginates_per 10
@@ -28,5 +28,14 @@ class Release < ActiveRecord::Base
 
   def set_coordinator
     self.coordinator = "Russell Craxford" if self.coordinator.blank?
+  end
+
+  def self.sop_version(repo, version)
+    begin
+      sop_version = Octokit.contents("Sage/#{repo}", :path => 'SOP_VERSION', :ref => "v#{version}.rc1").content
+      Base64.decode64(sop_version)
+    rescue
+      "?"
+    end
   end
 end

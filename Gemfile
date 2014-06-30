@@ -20,6 +20,7 @@ gem 'datetimepicker-rails', :require => 'datetimepicker-rails', :git => 'git://g
 gem 'kaminari-bootstrap', '~> 0.1.3'
 gem 'rails-bootstrap-markdown', '~> 0.0.2'
 gem 'redcarpet'
+gem "octokit", "~> 3.0"
 
 group :development do
   gem "letter_opener"
