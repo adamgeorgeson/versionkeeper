@@ -12,7 +12,7 @@ describe Release do
 
   it "should be valid with only a date" do
     only_date = Release.new(FactoryGirl.attributes_for(:release_only_date))
-    no_date.should be_valid
+    only_date.should be_valid
   end
 
   it "should return a specified apps version number for the previous release if no version number present for this release" do
@@ -62,8 +62,8 @@ describe Release do
   end
 
   describe :sop_version do
-    it "returns a sop_version from github if present" do
-      Octokit.stub_chain('contents', 'content').and_return 'MS40LjQK\n'
+    it "returns a base64 decoded sop_version from github if present" do
+      Octokit.stub_chain('contents', 'content').and_return 'MS40LjQK'
       expect(Release.sop_version('mysageone_uk', '2.14')).to eq("1.4.4\n")
     end
 
