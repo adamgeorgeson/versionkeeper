@@ -38,4 +38,33 @@ class Release < ActiveRecord::Base
       "?"
     end
   end
+
+  def self.release_notes(repo, version)
+    case repo
+    when "mysageone_uk"
+      path = "RELEASENOTES.md"
+      split = "# Version \#{version}/\n"
+    when "sage_one_accounts_uk"
+      path = "RELEASE_NOTES.md"
+      split = "# Release \#{version}\n"
+    when "sage_one_advanced"
+      path = "RELEASE_NOTES.md"
+      split = "# Version \#{version}\n"
+    when "sage_one_payroll_ukie"
+      path = "RELEASENOTES.txt"
+      split = "Release #{version}."
+    when "sage_one_addons_uk"
+      path = "RELEASE_NOTES.md"
+      split = "Version #{version}\n"
+    when "chorizo"
+      path = "RELEASENOTES.txt"
+      split = "Version #{version}\n"
+    end
+    begin
+      release_notes = Octokit.contents("Sage/#{repo}", :path => path).content
+      release_notes = Base64.decode64(release_notes).split(split).keep_if { |r| r.include?("#{version}") }[0].to_s
+    rescue
+      "?"
+    end
+  end
 end

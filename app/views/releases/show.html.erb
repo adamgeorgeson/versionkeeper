@@ -15,22 +15,30 @@
       <dt><strong><%= I18n.t('app.mysageone') %>:</strong></dt>
       <dd <%= @release.mysageone.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('mysageone', @release) %> <span class = "label label-info">SOP <%= Release.sop_version('mysageone_uk', Release.version('mysageone', @release)) %></span></dd>
       <dt><strong><%= I18n.t('app.accounts') %>:</strong></dt>
-      <dd <%= @release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', @release) %> <span class = "label label-info">SOP <%= Release.sop_version('sage_one_accounts_uk', Release.version('accounts', @release)) %></span></dd>
+      <dd <%= @release.accounts.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts', @release) %> <span class = "label label-info"></span></dd>
       <dt><strong><%= I18n.t('app.accounts_extra') %>:</strong></dt>
       <dd <%= @release.accounts_extra.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_extra', @release) %> <span class = "label label-info">SOP <%= Release.sop_version('sage_one_advanced', Release.version('accounts_extra', @release)) %></span></dd>
       <dt><strong><%= I18n.t('app.payroll') %>:</strong></dt>
-      <dd <%= @release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', @release) %> <span class = "label label-info">SOP <%= Release.sop_version('sage_one_payroll_ukie', Release.version('payroll', @release)) %></span></dd>
+      <dd <%= @release.payroll.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('payroll', @release) %> <span class = "label label-info"></span></dd>
       <dt><strong><%= I18n.t('app.addons') %>:</strong></dt>
       <dd <%= @release.addons.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('addons', @release) %> <span class = "label label-info">SOP <%= Release.sop_version('sage_one_addons_uk', Release.version('addons', @release)) %></span></dd>
       <dt><strong><%= I18n.t('app.collaborate') %>:</strong></dt>
-      <dd <%= @release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', @release) %> <span class = "label label-info">SOP <%= Release.sop_version('chorizo', Release.version('collaborate', @release)) %></span></dd>
+      <dd <%= @release.collaborate.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('collaborate', @release) %> <span class = "label label-info"></span></dd>
       <dt><strong><%= I18n.t('app.help') %>:</strong></dt>
-      <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release) %> <span class = "label label-info">SOP <%= Release.sop_version('sageone_help_uk', Release.version('help', @release)) %></span></dd>
+      <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release) %> <span class = "label label-info"></span></dd>
     </dl>
   </div>
   <div class="span9">
     <div class="notes">
     <%= @release.notes.present? ? markdown(@release.notes) : "There are no notes for this release. Check back later." %>
+  </div>
+    <div class="notes">
+      <%= markdown("#My Sage One " + Release.release_notes('mysageone_uk', Release.version('mysageone',@release))) %>
+      <%= markdown("#Accounts " + Release.release_notes('sage_one_accounts_uk', Release.version('accounts',@release))) %>
+      <%= markdown("#Accounts Extra " + Release.release_notes('sage_one_advanced', Release.version('accounts_extra',@release))) %>
+      <%= markdown("#Payroll " + Release.release_notes('sage_one_payroll_ukie', Release.version('payroll',@release))) %>
+      <%= markdown("#Addons " + Release.release_notes('sage_one_addons_uk', Release.version('addons',@release))) %>
+      <%= markdown("#Collaborate " + Release.release_notes('chorizo', Release.version('collaborate',@release))) %>
   </div>
   </div>
 </div>
