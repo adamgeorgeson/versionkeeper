@@ -1,5 +1,5 @@
 <%= simple_form_for @release, :html => {:class => "form-vertical"} do |f| %>
-  <div class="row">
+  <div class="row-fluid">
     <div class="span5">
   <%= f.input :date, :as => :date_picker %>
   <%= f.input :coordinator %>
@@ -10,6 +10,8 @@
   <%= f.input :payroll, :placeholder => placeholder('payroll') %>
   <%= f.input :addons, :placeholder =>  placeholder('addons') %>
   <%= f.input :collaborate, :placeholder =>  placeholder('collaborate') %>
+  <%= f.input :accountant_edition, :placeholder =>  placeholder('accountant_edition') %>
+  <%= f.input :accounts_production, :placeholder =>  placeholder('accounts_production') %>
   <%= f.input :help, :placeholder =>  placeholder('help') %>
     </div>
     <div class="span7">
