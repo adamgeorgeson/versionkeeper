@@ -60,9 +60,11 @@ class Release < ActiveRecord::Base
       path = "RELEASENOTES.txt"
       split = "Version "
     end
+
     begin
       release_notes = Octokit.contents("Sage/#{repo}", :path => path).content
-      release_notes = Base64.decode64(release_notes).split(split).keep_if { |r| r.include?("#{version}") }[0].to_s
+      release_notes = Base64.decode64(release_notes)
+      release_notes.split(split).keep_if { |r| r.include?("#{version}") }[0].to_s
     rescue
       "?"
     end
