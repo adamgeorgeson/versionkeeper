@@ -16,9 +16,6 @@
  */
 
 body { padding-top: 40px; }
-@media screen and (max-width: 1024px) {
-    body { padding-top: 0px; }
-}
 
 .dl-horizontal-left{*zoom:1;}.dl-horizontal:before,.dl-horizontal:after{display:table;content:"";line-height:0;}
 .dl-horizontal-left:after{clear:both;}

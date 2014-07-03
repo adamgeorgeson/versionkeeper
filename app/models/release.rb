@@ -1,7 +1,8 @@
 class Release < ActiveRecord::Base
   attr_accessible :accounts, :accounts_extra, :addons,
-    :collaborate, :date, :help, :mysageone,
-    :notes, :payroll, :status, :coordinator
+    :date, :help, :mysageone,
+    :notes, :payroll, :status, :coordinator,
+    :collaborate, :accountant_edition, :accounts_production
 
   validates_presence_of :date
   before_save :set_coordinator
