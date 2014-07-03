@@ -12,6 +12,13 @@ class ReleasesController < ApplicationController
   # GET /releases/1
   def show
     @release = Release.find(params[:id])
+    @release_notes = ""
+    @release_notes << "#My Sage One " + Release.release_notes('mysageone_uk', Release.version('mysageone',@release)) + "\n"
+    @release_notes << "#Accounts " + Release.release_notes('sage_one_accounts_uk', Release.version('accounts',@release)) + "\n"
+    @release_notes << "#Accounts Extra " + Release.release_notes('sage_one_advanced', Release.version('accounts_extra',@release)) + "\n"
+    @release_notes << "#Payroll " + Release.release_notes('sage_one_payroll_ukie', Release.version('payroll',@release)) + "\n" 
+    @release_notes << "#Addons " + Release.release_notes('sage_one_addons_uk', Release.version('addons',@release)) + "\n"
+    @release_notes << "#Collaborate " + Release.release_notes('chorizo', Release.version('collaborate',@release))
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +45,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       if @release.save
-        format.html { redirect_to @release, notice: 'Release was successfully created.' }
+        format.html { redirect_to releases_url, notice: 'Release was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -51,7 +58,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       if @release.update_attributes(params[:release])
-        format.html { redirect_to @release, notice: 'Release was successfully updated.' }
+        format.html { redirect_to releases_url, notice: 'Release was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end

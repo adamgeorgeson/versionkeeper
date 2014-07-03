@@ -30,9 +30,12 @@ describe ReleasesController do
       assigns(:release).should eq(@release1)
     end
 
-    it "should redirect to root when id not found" do
+    it "redirects to root when id not found" do
       get :show, id: 99999 
       response.should redirect_to root_url
+    end
+    
+    xit "requests release notes for included versions" do
     end
   end
 
@@ -75,9 +78,9 @@ describe ReleasesController do
         expect{ post :create, release: FactoryGirl.attributes_for(:release) }.to change(Release, :count).by(1)
       end
 
-      it "redirects to the show page of new release" do
+      it "redirects to releases#index" do
         post :create, release: FactoryGirl.attributes_for(:release)
-        response.should redirect_to release_path(assigns[:release])
+        response.should redirect_to releases_url
       end
     end
 
@@ -111,9 +114,9 @@ describe ReleasesController do
         @release1.notes.should eq("Updated Notes")
       end
       
-      it "redirects to the show page of updated release" do
+      it "redirects to releases#index" do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:release)
-        response.should redirect_to release_path(assigns[:release])
+        response.should redirect_to releases_path
       end
     end
     
