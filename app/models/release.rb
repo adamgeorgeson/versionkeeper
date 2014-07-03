@@ -43,22 +43,22 @@ class Release < ActiveRecord::Base
     case repo
     when "mysageone_uk"
       path = "RELEASENOTES.md"
-      split = "# Version \#{version}/\n"
+      split = "# Version "
     when "sage_one_accounts_uk"
       path = "RELEASE_NOTES.md"
-      split = "# Release \#{version}\n"
+      split = "# Release "
     when "sage_one_advanced"
       path = "RELEASE_NOTES.md"
-      split = "# Version \#{version}\n"
+      split = "# Version "
     when "sage_one_payroll_ukie"
       path = "RELEASENOTES.txt"
-      split = "Release #{version}."
+      split = "Release "
     when "sage_one_addons_uk"
       path = "RELEASE_NOTES.md"
-      split = "Version #{version}\n"
+      split = "Version "
     when "chorizo"
       path = "RELEASENOTES.txt"
-      split = "Version #{version}\n"
+      split = "Version "
     end
     begin
       release_notes = Octokit.contents("Sage/#{repo}", :path => path).content
