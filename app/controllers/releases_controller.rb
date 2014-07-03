@@ -12,6 +12,13 @@ class ReleasesController < ApplicationController
   # GET /releases/1
   def show
     @release = Release.find(params[:id])
+    @release_notes = ""
+    @release_notes << "#My Sage One " + Release.release_notes('mysageone_uk', Release.version('mysageone',@release))
+    @release_notes << "#Accounts " + Release.release_notes('sage_one_accounts_uk', Release.version('accounts',@release))
+    @release_notes << "#Accounts Extra " + Release.release_notes('sage_one_advanced', Release.version('accounts_extra',@release))
+    @release_notes << "#Payroll " + Release.release_notes('sage_one_payroll_ukie', Release.version('payroll',@release)) 
+    @release_notes << "#Addons " + Release.release_notes('sage_one_addons_uk', Release.version('addons',@release))
+    @release_notes << "#Collaborate " + Release.release_notes('chorizo', Release.version('collaborate',@release))
 
     respond_to do |format|
       format.html # show.html.erb

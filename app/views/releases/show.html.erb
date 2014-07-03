@@ -33,12 +33,7 @@
     <%= @release.notes.present? ? markdown(@release.notes) : "There are no notes for this release. Check back later." %>
   </div>
     <div class="notes">
-      <%= markdown("#My Sage One " + Release.release_notes('mysageone_uk', Release.version('mysageone',@release))) %>
-      <%= markdown("#Accounts " + Release.release_notes('sage_one_accounts_uk', Release.version('accounts',@release))) %>
-      <%= markdown("#Accounts Extra " + Release.release_notes('sage_one_advanced', Release.version('accounts_extra',@release))) %>
-      <%= markdown("#Payroll " + Release.release_notes('sage_one_payroll_ukie', Release.version('payroll',@release))) %>
-      <%= markdown("#Addons " + Release.release_notes('sage_one_addons_uk', Release.version('addons',@release))) %>
-      <%= markdown("#Collaborate " + Release.release_notes('chorizo', Release.version('collaborate',@release))) %>
+      <%= markdown(@release_notes) %>
   </div>
   </div>
 </div>
