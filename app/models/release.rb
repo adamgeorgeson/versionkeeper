@@ -60,6 +60,12 @@ class Release < ActiveRecord::Base
     when "chorizo"
       path = "RELEASENOTES.txt"
       split = "Version "
+    when "new_accountant_edition"
+      path = "RELEASENOTES.md"
+      split = "Version "
+    when "sageone_accounts_production"
+      path = "ReleaseNotes.txt"
+      split = "Version "
     end
 
     begin

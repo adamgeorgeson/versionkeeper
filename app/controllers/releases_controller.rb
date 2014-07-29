@@ -12,15 +12,7 @@ class ReleasesController < ApplicationController
   # GET /releases/1
   def show
     @release = Release.find(params[:id])
-    @release_notes = ""
-    @release_notes << "#My Sage One " + Release.release_notes('mysageone_uk', Release.version('mysageone',@release)) + "\n" if @release.mysageone.present?
-    @release_notes << "#Accounts " + Release.release_notes('sage_one_accounts_uk', Release.version('accounts',@release)) + "\n" if @release.accounts.present?
-    @release_notes << "#Accounts Extra " + Release.release_notes('sage_one_advanced', Release.version('accounts_extra',@release)) + "\n" if @release.accounts_extra.present?
-    @release_notes << "#Payroll " + Release.release_notes('sage_one_payroll_ukie', Release.version('payroll',@release)) + "\n" if @release.payroll.present?
-    @release_notes << "#Addons " + Release.release_notes('sage_one_addons_uk', Release.version('addons',@release)) + "\n" if @release.addons.present?
-    @release_notes << "#Collaborate " + Release.release_notes('chorizo', Release.version('collaborate',@release)) if @release.collaborate.present?
-    @release_notes << "#Accountant Edition " + Release.release_notes('new_accountant_edition', Release.version('accountant_edition',@release)) if @release.accountant_edition.present?
-    @release_notes << "#Accounts Production " + Release.release_notes('sageone_accounts_production', Release.version('accounts_production',@release)) if @release.accounts_production.present?
+    load_release_notes
 
     respond_to do |format|
       format.html # show.html.erb
@@ -101,4 +93,16 @@ class ReleasesController < ApplicationController
     end
   end
   helper_method :placeholder
+
+  def load_release_notes
+    @release_notes = ""
+    @release_notes << "#My Sage One " + Release.release_notes('mysageone_uk', Release.version('mysageone',@release)) + "\n" if @release.mysageone.present?
+    @release_notes << "#Accounts " + Release.release_notes('sage_one_accounts_uk', Release.version('accounts',@release)) + "\n" if @release.accounts.present?
+    @release_notes << "#Accounts Extra " + Release.release_notes('sage_one_advanced', Release.version('accounts_extra',@release)) + "\n" if @release.accounts_extra.present?
+    @release_notes << "#Payroll " + Release.release_notes('sage_one_payroll_ukie', Release.version('payroll',@release)) + "\n" if @release.payroll.present?
+    @release_notes << "#Addons " + Release.release_notes('sage_one_addons_uk', Release.version('addons',@release)) + "\n" if @release.addons.present?
+    @release_notes << "#Collaborate " + Release.release_notes('chorizo', Release.version('collaborate',@release)) if @release.collaborate.present?
+    @release_notes << "#Accountant Edition " + Release.release_notes('new_accountant_edition', Release.version('accountant_edition',@release)) if @release.accountant_edition.present?
+    @release_notes << "#Accounts Production " + Release.release_notes('sageone_accounts_production', Release.version('accounts_production',@release)) if @release.accounts_production.present?
+  end
 end
