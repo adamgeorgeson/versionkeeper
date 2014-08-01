@@ -14,7 +14,7 @@ class Release < ActiveRecord::Base
         release[app]
       else
         @date = release.date
-        where("#{app} != '' AND date <= ?", @date).pluck(app).sort_by(&:to_i).last || '-'
+        where("#{app} != '' AND date <= ?", @date).pluck(app).sort_by{ |a| a.split('.').map &:to_i }.last || '-'
       end
     end
   end
