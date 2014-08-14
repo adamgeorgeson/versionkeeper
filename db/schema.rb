@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140703192006) do
+ActiveRecord::Schema.define(:version => 20140814181745) do
 
   create_table "releases", :force => true do |t|
     t.string   "accounts"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20140703192006) do
     t.string   "coordinator"
     t.string   "accountant_edition"
     t.string   "accounts_production"
+    t.text     "release_notes"
   end
 
   create_table "users", :force => true do |t|
