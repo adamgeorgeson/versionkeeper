@@ -95,6 +95,6 @@ class ReleasesController < ApplicationController
   helper_method :placeholder
 
   def load_release_notes
-    @release_notes = Release.build_release_notes(@release)
+    @release_notes = ReleaseNote.build_release_notes(@release)
   end
 end

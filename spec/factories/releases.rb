@@ -12,7 +12,6 @@ FactoryGirl.define do
     addons '1.0'
     notes 'Notes'
     status 'UAT'
-    release_notes 'Release Notes'
   end
 
   factory :release_without_status, class: Release do
@@ -26,7 +25,6 @@ FactoryGirl.define do
     addons '1.0'
     notes 'Notes'
     status 'UAT'
-    release_notes 'Release Notes'
   end
 
   factory :release_only_date, class: Release do
