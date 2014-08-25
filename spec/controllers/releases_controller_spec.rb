@@ -82,6 +82,8 @@ describe ReleasesController do
         post :create, release: FactoryGirl.attributes_for(:release)
         response.should redirect_to releases_url
       end
+
+      it 'posts a notification to slack'
     end
 
     context "with invalid attributes" do
@@ -118,6 +120,8 @@ describe ReleasesController do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:release)
         response.should redirect_to releases_path
       end
+
+      it 'posts a notification to slack'
     end
     
     context "invalid attributes" do
