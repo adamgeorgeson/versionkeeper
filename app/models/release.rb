@@ -4,6 +4,8 @@ class Release < ActiveRecord::Base
     :notes, :payroll, :status, :coordinator,
     :collaborate, :accountant_edition, :accounts_production
 
+  has_one :release_note
+
   validates_presence_of :date
   before_save :set_coordinator
   paginates_per 10
@@ -28,7 +30,7 @@ class Release < ActiveRecord::Base
   end
 
   def set_coordinator
-    self.coordinator = "Russell Craxford" if self.coordinator.blank?
+    self.coordinator = 'Russell Craxford' if self.coordinator.blank?
   end
 
   def self.sop_version(repo, version)
@@ -40,40 +42,4 @@ class Release < ActiveRecord::Base
     end
   end
 
-  def self.release_notes(repo, version)
-    case repo
-    when "mysageone_uk"
-      path = "RELEASENOTES.md"
-      split = "# Version "
-    when "sage_one_accounts_uk"
-      path = "RELEASE_NOTES.md"
-      split = "# Release "
-    when "sage_one_advanced"
-      path = "RELEASE_NOTES.md"
-      split = "# Version "
-    when "sage_one_payroll_ukie"
-      path = "RELEASENOTES.txt"
-      split = "Release "
-    when "sage_one_addons_uk"
-      path = "RELEASE_NOTES.md"
-      split = "Version "
-    when "chorizo"
-      path = "RELEASENOTES.txt"
-      split = "Version "
-    when "new_accountant_edition"
-      path = "RELEASENOTES.md"
-      split = "Version "
-    when "sageone_accounts_production"
-      path = "ReleaseNotes.txt"
-      split = "Version "
-    end
-
-    begin
-      release_notes = Octokit.contents("Sage/#{repo}", :path => path).content
-      release_notes = Base64.decode64(release_notes)
-      release_notes.split(split).keep_if { |r| r.include?("#{version}") }[0].to_s
-    rescue
-      "?"
-    end
-  end
 end

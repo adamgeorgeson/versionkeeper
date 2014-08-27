@@ -10,7 +10,7 @@ FactoryGirl.define do
     collaborate '1.0'
     help '1.0'
     addons '1.0'
-    notes 'Release Notes'
+    notes 'Notes'
     status 'UAT'
   end
 
@@ -23,7 +23,7 @@ FactoryGirl.define do
     collaborate '1.0'
     help '1.0'
     addons '1.0'
-    notes 'Release Notes'
+    notes 'Notes'
     status 'UAT'
   end
 
