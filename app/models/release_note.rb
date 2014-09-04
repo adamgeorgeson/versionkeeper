@@ -43,7 +43,7 @@ class ReleaseNote < ActiveRecord::Base
   end
 
   def self.build_release_notes(release)
-    return release.release_note if release.release_note.present? && release.status == 'Production'
+    return release.release_note.release_notes if release.release_note.present? && release.status == 'Production'
 
     mysageone = retrieve_release_notes('mysageone_uk', Release.version('mysageone',release)) + "\n" if release.mysageone.present?
     accounts = retrieve_release_notes('sage_one_accounts_uk', Release.version('accounts',release)) + "\n" if release.accounts.present?
