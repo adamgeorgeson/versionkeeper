@@ -1,7 +1,6 @@
 class ReleasesController < ApplicationController
   before_filter :load_releases
   before_filter :set_release, only: [:show, :edit, :update, :destroy]
-
   # GET /releases
   def index
     respond_to do |format|
