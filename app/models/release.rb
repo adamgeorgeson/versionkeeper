@@ -14,7 +14,7 @@ class Release < ActiveRecord::Base
   scope :search_filter, lambda { |search_terms|
     return nil if search_terms.blank?
     search_terms = "%#{search_terms}%"
-    where('release_notes.release_notes LIKE ?', search_terms).joins(:release_note)
+    where('release_notes.release_notes LIKE ? OR releases.notes LIKE ?', search_terms, search_terms).joins(:release_note)
   }
 
 

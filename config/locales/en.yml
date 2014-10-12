@@ -8,7 +8,7 @@ en:
     coordinator: "Co-ordinator"
     date: "Date"
     empty: "There are no releases."
-    no_match: "No releases match this criteria."
+    no_match: "No releases match search criteria."
     notes: "Notes"
     status: "Status"
   app:

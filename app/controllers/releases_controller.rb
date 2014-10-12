@@ -80,7 +80,7 @@ class ReleasesController < ApplicationController
 
   # Load all releases
   def load_releases
-    @releases = Release.order('date DESC, created_at DESC').page(params[:page]).per(10)
+    @releases = Release.search_filter(params['q']).order('date DESC, created_at DESC').page(params[:page]).per(10)
     @next_release = Release.next_release
     @last_release = Release.last_release
   end

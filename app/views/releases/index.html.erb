@@ -7,27 +7,31 @@
     :class => 'btn btn-primary' %>
   </div>
   <div id ="content">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th><%= I18n.t('releases.date') %></th>
-          <th><%= I18n.t('app.mysageone') %></th>
-          <th><%= I18n.t('app.accounts') %></th>
-          <th><%= I18n.t('app.accounts_extra') %></th>
-          <th><%= I18n.t('app.payroll') %></th>
-          <th><%= I18n.t('app.addons') %></th>
-          <th><%= I18n.t('app.collaborate') %></th>
-          <th><%= I18n.t('app.accountant_edition') %></th>
-          <th><%= I18n.t('app.accounts_production') %></th>
-          <th><%= I18n.t('app.help') %></th>
-          <th><%= I18n.t('releases.status') %></th>
-          <th width="150px"><%= I18n.t('releases.coordinator') %></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render(partial: 'release', collection: @releases) %>
-      </tbody>
-    </table>
+    <% if @releases.empty? %>
+      <%= I18n.t('releases.no_match') %>
+    <% else %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= I18n.t('releases.date') %></th>
+            <th><%= I18n.t('app.mysageone') %></th>
+            <th><%= I18n.t('app.accounts') %></th>
+            <th><%= I18n.t('app.accounts_extra') %></th>
+            <th><%= I18n.t('app.payroll') %></th>
+            <th><%= I18n.t('app.addons') %></th>
+            <th><%= I18n.t('app.collaborate') %></th>
+            <th><%= I18n.t('app.accountant_edition') %></th>
+            <th><%= I18n.t('app.accounts_production') %></th>
+            <th><%= I18n.t('app.help') %></th>
+            <th><%= I18n.t('releases.status') %></th>
+            <th width="150px"><%= I18n.t('releases.coordinator') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render(partial: 'release', collection: @releases) %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 
   <center><%= paginate @releases, :html_options => {:class => "pagination"} %></center>
