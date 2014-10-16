@@ -49,5 +49,7 @@
     <div class="notes">
       <%= @release.notes.present? ? markdown(@release.notes) : "There are no notes for this release. Check back later." %>
     </div>
+
+    <%= render partial: 'shared/disqus', locals: { title: @release.date} %>
   </div>
 </div>
