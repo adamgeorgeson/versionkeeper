@@ -22,6 +22,7 @@ gem 'rails-bootstrap-markdown', '~> 0.0.2'
 gem 'redcarpet'
 gem "octokit", "~> 3.0"
 gem 'slack-post'
+gem 'haml'
 
 group :development do
   gem "letter_opener"

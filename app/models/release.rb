@@ -8,7 +8,15 @@ class Release < ActiveRecord::Base
 
   validates_presence_of :date
   before_save :set_coordinator
+
   paginates_per 10
+
+  scope :search_filter, lambda { |search_terms|
+    return nil if search_terms.blank?
+    search_terms = "%#{search_terms}%"
+    where('release_notes.release_notes LIKE ? OR releases.notes LIKE ?', search_terms, search_terms).joins(:release_note)
+  }
+
 
   def self.version(app, release)
     if release.present?
@@ -16,7 +24,7 @@ class Release < ActiveRecord::Base
         release[app]
       else
         @date = release.date
-        where("#{app} != '' AND date <= ?", @date).pluck(app).sort_by{ |a| a.split('.').map &:to_i }.last || '-'
+        where("#{app} != '' AND date <= ?", @date).pluck(app).sort_by{ |a| a.split('.').map(&:to_i) }.last || '-'
       end
     end
   end

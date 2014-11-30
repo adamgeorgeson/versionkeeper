@@ -1,3 +1,7 @@
+# Version 1.3
+ * Add search
+ * Add Disqus
+
 # Version 1.2
 
 ### Changes

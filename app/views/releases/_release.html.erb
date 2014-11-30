@@ -1,0 +1,24 @@
+<%= div_for(release) do %>
+  <tr data-link='<%= release_path(release) %>' class = "table_data <%= if release == @next_release then "next_release" end %>">
+    <td><%= release.date %></td>
+    <td class="<%= release.mysageone.present? ? "new-version" : "previous-version" %>"><%= Release.version('mysageone', release) %></td>
+    <td class="<%= release.accounts.present? ? "new-version" : "previous-version" %>"><%= Release.version('accounts', release) %></td>
+    <td class="<%= release.accounts_extra.present? ? "new-version" : "previous-version" %>"><%= Release.version('accounts_extra', release) %></td>
+    <td class="<%= release.payroll.present? ? "new-version" : "previous-version" %>"><%= Release.version('payroll', release) %></td>
+    <td class="<%= release.addons.present? ? "new-version" : "previous-version" %>"><%= Release.version('addons', release) %></td>
+    <td class="<%= release.collaborate.present? ? "new-version" : "previous-version" %>"><%= Release.version('collaborate', release) %></td>
+    <td class="<%= release.accountant_edition.present? ? "new-version" : "previous-version" %>"><%= Release.version('accountant_edition', release) %></td>
+    <td class="<%= release.accounts_production.present? ? "new-version" : "previous-version" %>"><%= Release.version('accounts_production', release) %></td>
+    <td class="<%= release.help.present? ? "new-version" : "previous-version" %>"><%= Release.version('help', release) %></td>
+    <td><%= ['UAT','Pre-Prod'].include?(release.status) && release.date < Date.today ? release.status + "?" : release.status %></td>
+    <td><%= release.coordinator %></td>
+    <td><%= link_to t('.edit', :default => t("helpers.links.edit")),
+      edit_release_path(release), :class => 'btn btn-mini' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+        release_path(release),
+        :method => 'delete',
+        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+        :class => 'btn btn-danger btn-mini' %>
+      </td>
+    </tr>
+  <% end %>
