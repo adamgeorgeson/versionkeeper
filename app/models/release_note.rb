@@ -66,12 +66,12 @@ class ReleaseNote < ActiveRecord::Base
 
     release_notes.gsub! '### ', '##### '
 
-    self.first_or_initialize(release_id: release.id).update_attribute(:release_notes, release_notes)
+    self.where(release_id: release.id).first_or_initialize.update_attribute(:release_notes, release_notes)
 
     if release_notes.present?
       release_notes
     else
-      "There are no release notes ready yet. Check back later."
+      "There are no release notes ready yet. Try again later."
     end
   end
 
