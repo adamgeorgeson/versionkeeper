@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ReleasesController do
   before do
-    allow(Slack::Post).to receive(:post)
+    allow(Slack::Post).to receive(:post_with_attachments)
   end
 
   describe "GET 'index'" do
@@ -93,6 +93,11 @@ describe ReleasesController do
         post :create, release: FactoryGirl.attributes_for(:invalid_release)
         response.should render_template :new
       end
+
+      it 'posts to Slack' do
+        post :create, release: FactoryGirl.attributes_for(:release)
+        expect(Release).to receive(:post_to_slack)
+      end
     end
   end
 
@@ -117,6 +122,11 @@ describe ReleasesController do
       it "redirects to releases#index" do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:release)
         response.should redirect_to releases_path
+      end
+
+      it 'posts to Slack' do
+        put :update, id: @release1, release: FactoryGirl.attributes_for(:release)
+        expect(Release).to receive(:post_to_slack)
       end
     end
 
