@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Release do
+  before do
+    Slack::Post.stub(:post).and_return true
+  end
   it "should create a new instance given a valid attribute" do
     expect{ Release.create!(FactoryGirl.attributes_for(:release)) }.to change(Release, :count).by(1)
   end

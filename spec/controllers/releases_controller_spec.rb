@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe ReleasesController do
+  before do
+    allow(Slack::Post).to receive(:post)
+  end
 
   describe "GET 'index'" do
     it "should be successful" do
@@ -33,9 +36,6 @@ describe ReleasesController do
     it "redirects to root when id not found" do
       get :show, id: 99999 
       response.should redirect_to root_url
-    end
-    
-    xit "requests release notes for included versions" do
     end
   end
 
@@ -82,8 +82,6 @@ describe ReleasesController do
         post :create, release: FactoryGirl.attributes_for(:release)
         response.should redirect_to releases_url
       end
-
-      it 'posts a notification to slack'
     end
 
     context "with invalid attributes" do
@@ -97,46 +95,44 @@ describe ReleasesController do
       end
     end
   end
-  
+
   describe 'PUT update' do
     before :each do
       @release1 = FactoryGirl.create(:release)
     end
-    
+
     context "valid attributes" do
       it "located the requested @release1" do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:release)
         assigns(:release).should eq(@release1)
       end
-      
+
       it "changes @release1's attributes" do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:release, accounts: "2.0", notes: "Updated Notes")
         @release1.reload
         @release1.accounts.should eq("2.0")
         @release1.notes.should eq("Updated Notes")
       end
-      
+
       it "redirects to releases#index" do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:release)
         response.should redirect_to releases_path
       end
-
-      it 'posts a notification to slack'
     end
-    
+
     context "invalid attributes" do
       it "locates the requested @release1" do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:invalid_release)
         assigns(:release).should eq(@release1)
       end
-      
+
       it "does not change @release1's attributes" do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:invalid_release, accounts: "2.0")
         @release1.reload
         @release1.accounts.should_not eq("2.0")
         @release1.date.should_not eq("")
       end
-      
+
       it "re-renders the edit method" do
         put :update, id: @release1, release: FactoryGirl.attributes_for(:invalid_release)
         response.should render_template :edit
