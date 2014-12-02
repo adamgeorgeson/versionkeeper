@@ -55,11 +55,11 @@ class Release < ActiveRecord::Base
       {
       fallback: "#{message}: <#{release_url}|##{release.id} [#{release.date}]>.",
       title: "#{message}: <#{release_url}|##{release.id} [#{release.date}]>.",
-      pretext: "Status: #{release.status}",
+      pretext: "Date: <#{release_url}|##{release.id} [#{release.date}]> | Status: #{release.status}",
       color: "good",
         # Fields are displayed in a table on the message
         fields: [
-          {
+        {
         title: "My Sage One",
         value: release.mysageone,
         short: true
