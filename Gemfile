@@ -21,6 +21,7 @@ gem 'kaminari-bootstrap', '~> 0.1.3'
 gem 'rails-bootstrap-markdown', '~> 0.0.2'
 gem 'redcarpet'
 gem "octokit", "~> 3.0"
+gem 'slack-post', git: "git@github.com:CozyCo/slack-post.git", branch: "master"
 gem 'haml'
 
 group :development do
