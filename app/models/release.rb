@@ -61,47 +61,47 @@ class Release < ActiveRecord::Base
         fields: [
         {
         title: "My Sage One",
-        value: release.mysageone,
+        value: self.version('mysageone', release),
         short: true
       },
         {
         title: "Accountant Edition",
-        value: release.accountant_edition,
+        value: self.version('accountant_edition', release),
         short: true
       },
         {
         title: "Accounts",
-        value: release.accounts,
+        value: self.version('accounts', release),
         short: true
       },
         {
         title: "Accounts Extra",
-        value: release.accounts_extra,
+        value: self.version('accounts_extra', release),
         short: true
       },
         {
         title: "Addons",
-        value: release.addons,
+        value: self.version('addons', release),
         short: true
       },
         {
         title: "Payroll",
-        value: release.payroll,
+        value: self.version('payroll', release),
         short: true
       },
         {
         title: "Collaborate",
-        value: release.collaborate,
+        value: self.version('collaborate', release),
         short: true
       },
         {
         title: "Accounts Production",
-        value: release.accounts_production,
+        value: self.version('accounts_production', release),
         short: true
       },
         {
         title: "Help",
-        value: release.help,
+        value: self.version('help', release),
         short: true
       }
       ]
