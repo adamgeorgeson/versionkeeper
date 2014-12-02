@@ -4,6 +4,14 @@ GIT
   specs:
     datetimepicker-rails (0.0.8)
 
+GIT
+  remote: git@github.com:CozyCo/slack-post.git
+  revision: e25531508d2c4d5636f20be6ae3c93a866718922
+  branch: master
+  specs:
+    slack-post (0.2.0)
+      yajl-ruby
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -159,8 +167,6 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
-    slack-post (0.0.1)
-      yajl-ruby
     slop (3.5.0)
     sprockets (2.2.2)
       hike (~> 1.2)
@@ -211,7 +217,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simple_form
   simplecov (~> 0.7.1)
-  slack-post
+  slack-post!
   sqlite3
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
