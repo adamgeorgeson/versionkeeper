@@ -50,4 +50,66 @@ class Release < ActiveRecord::Base
     end
   end
 
+  def self.post_to_slack(release, message, release_url)
+    attachments = [
+      {
+      fallback: "#{message}: <#{release_url}|##{release.id} [#{release.date}]>.",
+      title: "#{message}: <#{release_url}|##{release.id} [#{release.date}]>.",
+      pretext: "Status: #{release.status}",
+      color: "good",
+        # Fields are displayed in a table on the message
+        fields: [
+          {
+        title: "My Sage One",
+        value: release.mysageone,
+        short: true
+      },
+        {
+        title: "Accountant Edition",
+        value: release.accountant_edition,
+        short: true
+      },
+        {
+        title: "Accounts",
+        value: release.accounts,
+        short: true
+      },
+        {
+        title: "Accounts Extra",
+        value: release.accounts_extra,
+        short: true
+      },
+        {
+        title: "Addons",
+        value: release.addons,
+        short: true
+      },
+        {
+        title: "Payroll",
+        value: release.payroll,
+        short: true
+      },
+        {
+        title: "Collaborate",
+        value: release.collaborate,
+        short: true
+      },
+        {
+        title: "Accounts Production",
+        value: release.accounts_production,
+        short: true
+      },
+        {
+        title: "Help",
+        value: release.help,
+        short: true
+      }
+      ]
+    }
+    ]
+
+    Slack::Post.post_with_attachments message, attachments
+  end
+
+
 end

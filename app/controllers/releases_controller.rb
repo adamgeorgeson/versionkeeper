@@ -38,6 +38,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       if @release.save
+        Release.post_to_slack(@release, "New Release", root_url + release_path(@release.id) )
         format.html { redirect_to releases_url, notice: 'Release was successfully created.' }
       else
         format.html { render action: 'new' }
@@ -51,6 +52,7 @@ class ReleasesController < ApplicationController
 
     respond_to do |format|
       if @release.update_attributes(params[:release])
+        Release.post_to_slack(@release, "Release Updated", root_url + release_path(@release.id) )
         format.html { redirect_to releases_url, notice: 'Release was successfully updated.' }
       else
         format.html { render action: 'edit' }
