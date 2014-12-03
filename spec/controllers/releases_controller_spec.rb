@@ -37,6 +37,11 @@ describe ReleasesController do
       get :show, id: 99999 
       response.should redirect_to root_url
     end
+
+    xit 'loads release notes' do
+      expect(ReleaseNote).to receive(:retrieve_release_notes)
+      get :show, id: @release1
+    end
   end
 
   describe "GET 'new'" do
@@ -95,8 +100,8 @@ describe ReleasesController do
       end
 
       it 'posts to Slack' do
+        expect(SlackNotifier).to receive(:post_version_numbers)
         post :create, release: FactoryGirl.attributes_for(:release)
-        expect(Release).to receive(:post_to_slack)
       end
     end
   end
@@ -125,8 +130,8 @@ describe ReleasesController do
       end
 
       it 'posts to Slack' do
+        expect(SlackNotifier).to receive(:post_version_numbers)
         put :update, id: @release1, release: FactoryGirl.attributes_for(:release)
-        expect(Release).to receive(:post_to_slack)
       end
     end
 

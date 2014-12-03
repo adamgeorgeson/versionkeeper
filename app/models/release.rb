@@ -17,6 +17,10 @@ class Release < ActiveRecord::Base
     where('release_notes.release_notes LIKE ? OR releases.notes LIKE ?', search_terms, search_terms).joins(:release_note)
   }
 
+  def self.repositories
+    ['mysageone', 'accountant_edition', 'accounts', 'accounts_extra',
+        'addons', 'payroll', 'collaborate', 'accounts_production', 'help']
+  end
 
   def self.version(app, release)
     if release.present?
@@ -50,66 +54,6 @@ class Release < ActiveRecord::Base
     end
   end
 
-  def self.post_to_slack(release, message, release_url)
-    attachments = [
-      {
-      fallback: "#{message}: <#{release_url}|##{release.id} [#{release.date}]>.",
-      title: "#{message}: <#{release_url}|##{release.id} [#{release.date}]>.",
-      pretext: "Date: <#{release_url}|##{release.id} [#{release.date}]> | Status: #{release.status}",
-      color: "good",
-        # Fields are displayed in a table on the message
-        fields: [
-        {
-        title: "My Sage One",
-        value: self.version('mysageone', release),
-        short: true
-      },
-        {
-        title: "Accountant Edition",
-        value: self.version('accountant_edition', release),
-        short: true
-      },
-        {
-        title: "Accounts",
-        value: self.version('accounts', release),
-        short: true
-      },
-        {
-        title: "Accounts Extra",
-        value: self.version('accounts_extra', release),
-        short: true
-      },
-        {
-        title: "Addons",
-        value: self.version('addons', release),
-        short: true
-      },
-        {
-        title: "Payroll",
-        value: self.version('payroll', release),
-        short: true
-      },
-        {
-        title: "Collaborate",
-        value: self.version('collaborate', release),
-        short: true
-      },
-        {
-        title: "Accounts Production",
-        value: self.version('accounts_production', release),
-        short: true
-      },
-        {
-        title: "Help",
-        value: self.version('help', release),
-        short: true
-      }
-      ]
-    }
-    ]
-
-    Slack::Post.post_with_attachments message, attachments
-  end
 
 
 end
