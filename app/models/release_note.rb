@@ -62,7 +62,7 @@ class ReleaseNote < ActiveRecord::Base
     release_notes << '####Addons ' + addons if addons.present?
     release_notes << '####Collaborate ' + collaborate if collaborate.present?
     release_notes << '####Accountants Edition ' + accountant_edition if accountant_edition.present?
-    release_notes << '####Accounts Production ' + accounts_production if accounts_production.present?
+    release_notes << '####Final Accounts ' + accounts_production if accounts_production.present?
 
     release_notes.gsub! '### ', '##### '
 
