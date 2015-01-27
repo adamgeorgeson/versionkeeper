@@ -13,6 +13,9 @@ class ReleaseNote < ActiveRecord::Base
     when 'sage_one_advanced'
       path = 'RELEASE_NOTES.md'
       split = '# Version '
+    when 'sage_one_gac_uki'
+      path = 'RELEASE_NOTES.md'
+      split = '# Version '
     when 'sage_one_payroll_ukie'
       path = 'RELEASENOTES.txt'
       split = 'Release '
@@ -47,7 +50,7 @@ class ReleaseNote < ActiveRecord::Base
 
     mysageone = retrieve_release_notes('mysageone_uk', Release.version('mysageone',release)) + "\n" if release.mysageone.present?
     accounts = retrieve_release_notes('sage_one_accounts_uk', Release.version('accounts',release)) + "\n" if release.accounts.present?
-    accounts_extra = retrieve_release_notes('sage_one_advanced', Release.version('accounts_extra',release)) + "\n" if release.accounts_extra.present?
+    accounts_extra = retrieve_release_notes('sage_one_gac_uki', Release.version('accounts_extra',release)) + "\n" if release.accounts_extra.present?
     payroll = retrieve_release_notes('sage_one_payroll_ukie', Release.version('payroll',release)) + "\n" if release.payroll.present?
     addons = retrieve_release_notes('sage_one_addons_uk', Release.version('addons',release)) + "\n" if release.addons.present?
     collaborate = retrieve_release_notes('chorizo', Release.version('collaborate',release)) + "\n" if release.collaborate.present?

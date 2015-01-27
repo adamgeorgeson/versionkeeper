@@ -48,12 +48,37 @@ class Release < ActiveRecord::Base
   def self.sop_version(repo, version)
     begin
       sop_version = Octokit.contents("Sage/#{repo}", :path => 'SOP_VERSION', :ref => "v#{version}.rc1").content
+      if sop_version.empty?
+        sop_version = Octokit.contents("Sage/#{repo}", :path => 'SOP_VERSION', :ref => "master").content
+      end
       Base64.decode64(sop_version)
     rescue
       "?"
     end
   end
 
+  def self.gac_version(repo, version)
+    begin
+      gac_version = Octokit.contents("Sage/#{repo}", :path => 'CORE_VERSION', :ref => "v#{version}.rc1").content
+      if gac_version.empty?
+        gac_version = Octokit.contents("Sage/#{repo}", :path => 'CORE_VERSION', :ref => "master").content
+      end
+      Base64.decode64(gac_version)
+    rescue
+      "?"
+    end
+  end
 
-
+  def self.sopa_version(repo, version)
+    begin
+      sopa_version = Octokit.contents("Sage/#{repo}", :path => 'SOPA_VERSION', :ref => "v#{version}.rc1").content
+      if sopa_version.empty?
+        sopa_version = Octokit.contents("Sage/#{repo}", :path => 'SOPA_VERSION', :ref => "master").content
+      end
+      Base64.decode64(sopa_version)
+    rescue
+      "?"
+    end
+  end
 end
+
