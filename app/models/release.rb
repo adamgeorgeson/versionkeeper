@@ -48,13 +48,13 @@ class Release < ActiveRecord::Base
   def self.sop_version(repo, version)
     begin
       if repo == 'sage_one_gac_uki'
-        sop_version = Octokit.contents("Sage/sage_one_advanced", :path => 'SOP_VERSION', :ref => "v#{version}.rc1").content
-        if sop_version.nil?
+        sop_version = Octokit.contents("Sage/sage_one_advanced", :path => 'SOP_VERSION', :ref => "#{gac_version('accounts_extra', version)}").content
+        unless sop_version
           sop_version = Octokit.contents("Sage/sage_one_advanced", :path => 'SOP_VERSION', :ref => "master").content
         end
       else
         sop_version = Octokit.contents("Sage/#{repo}", :path => 'SOP_VERSION', :ref => "v#{version}.rc1").content
-        if sop_version.nil?
+        unless sop_version
           sop_version = Octokit.contents("Sage/#{repo}", :path => 'SOP_VERSION', :ref => "master").content
         end
       end
@@ -67,7 +67,7 @@ class Release < ActiveRecord::Base
   def self.gac_version(repo, version)
     begin
       gac_version = Octokit.contents("Sage/#{repo}", :path => 'CORE_VERSION', :ref => "v#{version}.rc1").content
-      if gac_version.nil?
+      unless gac_version
         gac_version = Octokit.contents("Sage/#{repo}", :path => 'CORE_VERSION', :ref => "master").content
       end
       Base64.decode64(gac_version)
@@ -79,7 +79,7 @@ class Release < ActiveRecord::Base
   def self.sopa_version(repo, version)
     begin
       sopa_version = Octokit.contents("Sage/#{repo}", :path => 'SOPA_VERSION', :ref => "v#{version}.rc1").content
-      if sopa_version.nil?
+      unless sopa_version
         sopa_version = Octokit.contents("Sage/#{repo}", :path => 'SOPA_VERSION', :ref => "master").content
       end
       Base64.decode64(sopa_version)
