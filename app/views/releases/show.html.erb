@@ -37,6 +37,8 @@
       <dd <%= @release.accountant_edition.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accountant_edition', @release) %> <span class = "label label-info"></span></dd>
       <dt><strong><%= I18n.t('app.accounts_production') %>:</strong></dt>
       <dd <%= @release.accounts_production.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('accounts_production', @release) %> <span class = "label label-info"></span></dd>
+      <dt><strong><%= I18n.t('app.sageone_corp_tax_uk') %>:</strong></dt>
+      <dd <%= @release.sageone_corp_tax_uk.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('sageone_corp_tax_uk', @release) %> <span class = "label label-info"></span></dd>
       <dt><strong><%= I18n.t('app.help') %>:</strong></dt>
       <dd <%= @release.help.present? ? "class = new-version" : "class = previous-version" %>><%= Release.version('help', @release) %> <span class = "label label-info"></span></dd>
     </dl>

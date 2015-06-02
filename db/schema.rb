@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140821184626) do
+ActiveRecord::Schema.define(:version => 20150602214250) do
 
   create_table "release_notes", :force => true do |t|
     t.integer  "release_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20140821184626) do
     t.string   "coordinator"
     t.string   "accountant_edition"
     t.string   "accounts_production"
+    t.string   "sageone_corp_tax_uk"
   end
 
 end

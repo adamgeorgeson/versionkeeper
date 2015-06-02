@@ -3,21 +3,22 @@
 
 en:
   releases:
-    index: "Click on a row to view release details or make changes. Bold version numbers indicate a new version of an application. Green row indicates next release."
-    new_edit: "Input version values only for new versions of that application for this release."
-    coordinator: "Co-ordinator"
-    date: "Date"
-    empty: "There are no releases."
-    no_match: "No releases match search criteria."
-    notes: "Notes"
-    status: "Status"
+    index: 'Click on a row to view release details or make changes. Bold version numbers indicate a new version of an application. Green row indicates next release'
+    new_edit: 'Input version values only for new versions of that application for this release'
+    coordinator: 'Co-ordinator'
+    date: 'Date'
+    empty: 'There are no releases'
+    no_match: 'No releases match search criteria'
+    notes: 'Notes'
+    status: 'Status'
   app:
-    mysageone: "My Sage One"
-    accounts: "Accounts"
-    accounts_extra: "Accounts Extra"
-    collaborate: "Collaborate"
-    accountant_edition: "Accountant Edition"
-    accounts_production: "Final Accounts"
-    payroll: "Payroll"
-    addons: "Addons"
-    help: "Help"
+    mysageone: 'My Sage One'
+    accounts: 'Accounts'
+    accounts_extra: 'Accounts Extra'
+    collaborate: 'Collaborate'
+    accountant_edition: 'Accountant Edition'
+    accounts_production: 'Final Accounts'
+    sageone_corp_tax_uk: 'CT Online'
+    payroll: 'Payroll'
+    addons: 'Addons'
+    help: 'Help'

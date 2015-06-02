@@ -2,7 +2,7 @@ class Release < ActiveRecord::Base
   attr_accessible :accounts, :accounts_extra, :addons,
     :date, :help, :mysageone,
     :notes, :payroll, :status, :coordinator,
-    :collaborate, :accountant_edition, :accounts_production
+    :collaborate, :accountant_edition, :accounts_production, :sageone_corp_tax_uk
 
   has_one :release_note
 
@@ -19,7 +19,7 @@ class Release < ActiveRecord::Base
 
   def self.repositories
     ['mysageone', 'accountant_edition', 'accounts', 'accounts_extra',
-        'addons', 'payroll', 'collaborate', 'accounts_production', 'help']
+        'addons', 'payroll', 'collaborate', 'accounts_production', 'sageone_corp_tax_uk', 'help']
   end
 
   def self.version(app, release)

@@ -9,6 +9,7 @@
     <td class="<%= release.collaborate.present? ? "new-version" : "previous-version" %>"><%= Release.version('collaborate', release) %></td>
     <td class="<%= release.accountant_edition.present? ? "new-version" : "previous-version" %>"><%= Release.version('accountant_edition', release) %></td>
     <td class="<%= release.accounts_production.present? ? "new-version" : "previous-version" %>"><%= Release.version('accounts_production', release) %></td>
+    <td class="<%= release.sageone_corp_tax_uk.present? ? "new-version" : "previous-version" %>"><%= Release.version('sageone_corp_tax_uk', release) %></td>
     <td class="<%= release.help.present? ? "new-version" : "previous-version" %>"><%= Release.version('help', release) %></td>
     <td><%= ['UAT','Pre-Prod'].include?(release.status) && release.date < Date.today ? release.status + "?" : release.status %></td>
     <td><%= release.coordinator %></td>
